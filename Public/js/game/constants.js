@@ -1,0 +1,3 @@
+const GAME_WIDTH = 1680;
+const GAME_HEIGHT = 945;
+const SPRITE_FRAME_SIZE = 64;

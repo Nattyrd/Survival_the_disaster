@@ -1,0 +1,6 @@
+{
+  "watch": ["Electron", "Server", "Public"],
+  "ext": "js,cjs,html,css,json",
+  "ignore": ["Public/assets/**", "Assets/**", "node_modules/**"],
+  "exec": "electron ."
+}

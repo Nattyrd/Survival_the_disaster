@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Juego</title>
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+    <div class="menu-bg"></div>
+
+    <div class="container">
+        <h1>Mi Juego</h1>
+        <p>Elige tu misión y derrota a cada jefe</p>
+
+        <div class="buttons" id="main-buttons">
+            <button class="play" type="button" id="btn-play">Jugar</button>
+            <button class="settings" type="button" id="btn-settings">Configuración</button>
+        </div>
+
+        <div class="buttons mission-buttons hidden" id="mission-buttons">
+            <button class="mission" type="button" data-mission="1">Misión 1</button>
+            <button class="mission" type="button" data-mission="2">Misión 2</button>
+            <button class="mission" type="button" data-mission="3">Misión 3</button>
+            <button class="back" type="button" id="btn-back">Volver</button>
+        </div>
+
+        <div class="footer">Electron Desktop App</div>
+    </div>
+
+    <script src="/js/menu.js"></script>
+</body>
+</html>
