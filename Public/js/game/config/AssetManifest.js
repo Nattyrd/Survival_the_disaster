@@ -15,6 +15,22 @@ const ENTITY_MANIFESTS = {
         ]
     },
 
+    hero2: {
+        id: "hero2",
+        basePath: "/assets/sprites/hero", // Usando mismos assets por ahora como placeholder
+        sheets: [
+            { key: "stand", file: "Stand.png", frames: 5 },
+            { key: "walk", file: "Walk1.png", frames: 13 },
+            { key: "jump", file: "Jump1.png", frames: 9 },
+            { key: "stand_weapon", file: "StandWeapon.png", frames: 4 },
+            { key: "walk_weapon", file: "WalkWeapon.png", frames: 8 },
+            { key: "jump_weapon", file: "JumpWeapon.png", frames: 9 },
+            { key: "attack", file: "Attack.png", frames: 6 },
+            { key: "bullet", file: "Bala.png", frames: 7 },
+            { key: "died", file: "Died1.png", frames: 8 }
+        ]
+    },
+
     boss1: {
         id: "boss1",
         basePath: "/assets/sprites/bosses/Boss1",

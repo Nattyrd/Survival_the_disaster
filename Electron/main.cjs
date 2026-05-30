@@ -45,7 +45,7 @@ function createWindow() {
     // CARGA TU APP
     // ================================
 
-    win.loadURL("http://localhost:3000");
+    win.loadURL("http://localhost:3000/game");
 
     // ================================
     // DEVTOOLS
