@@ -15,6 +15,7 @@ const ENTITY_MANIFESTS = {
     ],
   },
 
+<<<<<<< HEAD
   hero2: {
     id: "hero2",
     basePath: "/assets/sprites/hero", // Usando mismos assets por ahora como placeholder
@@ -30,6 +31,40 @@ const ENTITY_MANIFESTS = {
       { key: "died", file: "Died1.png", frames: 8 },
     ],
   },
+=======
+    hero2: {
+        id: "hero2",
+        basePath: "/assets/sprites/hero", // Usando mismos assets por ahora como placeholder
+        sheets: [
+            { key: "stand", file: "Stand.png", frames: 5 },
+            { key: "walk", file: "Walk1.png", frames: 13 },
+            { key: "jump", file: "Jump1.png", frames: 9 },
+            { key: "stand_weapon", file: "StandWeapon.png", frames: 4 },
+            { key: "walk_weapon", file: "WalkWeapon.png", frames: 8 },
+            { key: "jump_weapon", file: "JumpWeapon.png", frames: 9 },
+            { key: "attack", file: "Attack.png", frames: 6 },
+            { key: "bullet", file: "Bala.png", frames: 7 },
+            { key: "died", file: "Died1.png", frames: 8 }
+        ]
+    },
+
+    boss1: {
+        id: "boss1",
+        basePath: "/assets/sprites/bosses/Boss1",
+        sheets: [
+            { key: "idle", file: "Idle.png", frameWidth: 96, frameHeight: 96, frames: 4 },
+            { key: "walk", file: "Walk.png", frameWidth: 96, frameHeight: 96, frames: 6 },
+            { key: "attack", file: "Attack.png", frameWidth: 96, frameHeight: 96, frames: 6 },
+            { key: "walk_attack", file: "Walk_attack.png", frameWidth: 96, frameHeight: 96, frames: 6 },
+            { key: "hurt", file: "Hurt.png", frameWidth: 96, frameHeight: 96, frames: 2 },
+            { key: "death", file: "Death.png", frameWidth: 96, frameHeight: 96, frames: 6 },
+            { key: "fly_up", file: "Fly_up.png", frameWidth: 96, frameHeight: 96, frames: 4 },
+            { key: "fly_down", file: "Fly_down.png", frameWidth: 96, frameHeight: 96, frames: 6 },
+            { key: "special1", file: "Special1.png", frameWidth: 48, frameHeight: 48, frames: 6 },
+            { key: "special2", file: "Special2.png", frameWidth: 48, frameHeight: 48, frames: 4 }
+        ]
+    },
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
 
   boss1: {
     id: "boss1",

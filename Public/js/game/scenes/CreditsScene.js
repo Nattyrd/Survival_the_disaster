@@ -107,7 +107,11 @@ class CreditsScene extends Phaser.Scene {
 
     this.cameras.main.fadeOut(500);
     this.time.delayedCall(500, () => {
+<<<<<<< HEAD
       irAlMenuPrincipal(this);
+=======
+      this.scene.start('MenuScene');
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     });
   }
 

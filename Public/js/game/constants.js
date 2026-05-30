@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Resolución interna del juego (mundo lógico en píxeles).
  * Phaser Scale.FIT escala esto a la ventana del navegador, pero el combate
@@ -7,6 +8,10 @@ const GAME_WIDTH = 1680;
 const GAME_HEIGHT = 900;
 
 /** Tamaño base de frames del héroe en el manifest (px). */
+=======
+const GAME_WIDTH = 1280;
+const GAME_HEIGHT = 720;
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
 const SPRITE_FRAME_SIZE = 64;
 
 /**

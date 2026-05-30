@@ -9,6 +9,7 @@ class MenuScene extends Phaser.Scene {
     super({ key: "MenuScene" });
     this.botones = [];
     this.botonesIndice = 0;
+<<<<<<< HEAD
 
     // Estados del menú
     this.estado = "PRINCIPAL"; // PRINCIPAL, PERSONAJE, CINEMATICA, MISIONES, HISTORIA
@@ -31,14 +32,32 @@ class MenuScene extends Phaser.Scene {
     this.navegacionBloqueada = false;
     this.estado = "PRINCIPAL";
 
+=======
+    
+    // Estados del menú
+    this.estado = "PRINCIPAL"; // PRINCIPAL, PERSONAJE, CINEMATICA, MISIONES
+    
+    this.botonesPrincipales = [];
+    this.botonesPersonajes = [];
+    this.botonesMisiones = [];
+  }
+
+  create() {
+    console.log('[MenuScene] → Iniciando MenuScene v2');
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     this.cameras.main.setBackgroundColor("#000000");
 
     // Fondo
     try {
+<<<<<<< HEAD
       if (this.textures.exists("menuBg")) {
         this.add
           .image(GAME_WIDTH / 2, GAME_HEIGHT / 2, "menuBg")
           .setDepth(-100);
+=======
+      if (this.textures.exists('menuBg')) {
+        this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'menuBg').setDepth(-100);
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
       }
     } catch (e) {}
 
@@ -46,6 +65,7 @@ class MenuScene extends Phaser.Scene {
     this.crearMenuPrincipal();
     this.crearSubMenuPersonajes();
     this.crearSubMenuMisiones();
+<<<<<<< HEAD
     this.crearSubMenuHistoria();
 
     // Entrada Teclado
@@ -60,10 +80,19 @@ class MenuScene extends Phaser.Scene {
     this.teclas.down.on("down", () => this.cambiarSeleccion(1));
     this.teclas.enter.on("down", () => this.confirmarSeleccion());
     this.teclas.esc.on("down", () => this.manejarEsc());
+=======
+
+    // Entrada Teclado
+    this.input.keyboard.on('keydown-UP', () => this.cambiarSeleccion(-1));
+    this.input.keyboard.on('keydown-DOWN', () => this.cambiarSeleccion(1));
+    this.input.keyboard.on('keydown-ENTER', () => this.confirmarSeleccion());
+    this.input.keyboard.on('keydown-ESC', () => this.manejarEsc());
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
 
     this.cameras.main.fadeIn(1000);
   }
 
+<<<<<<< HEAD
   shutdown() {
     if (this.teclas) {
       this.teclas.up.removeAllListeners();
@@ -74,11 +103,14 @@ class MenuScene extends Phaser.Scene {
     this.tweens.killAll();
   }
 
+=======
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
   // ╔════════════════════════════════════════════════════════════════╗
   // ║ MENÚ PRINCIPAL
   // ╚════════════════════════════════════════════════════════════════╝
 
   crearMenuPrincipal() {
+<<<<<<< HEAD
     const btnW = 350;
     const btnH = 55;
     const btnGap = 68;
@@ -109,6 +141,23 @@ class MenuScene extends Phaser.Scene {
         callback: callbacks[i],
       });
       this.botonesPrincipales.push(btn);
+=======
+    const posY = [350, 420, 490, 560, 630];
+    const textos = ['Empezar Aventura', 'Continuar', 'Ajustes', 'Créditos', 'Salir'];
+    const callbacks = [
+        () => this.cambiarEstado("PERSONAJE"),
+        () => this.continuarJuego(),
+        () => this.irAjustes(),
+        () => this.irCreditos(),
+        () => this.salirJuego()
+    ];
+
+    textos.forEach((txt, i) => {
+        const btn = new Button(this, GAME_WIDTH / 2, posY[i], {
+            text: txt, width: 350, height: 55, callback: callbacks[i]
+        });
+        this.botonesPrincipales.push(btn);
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     });
     this.botones = this.botonesPrincipales;
     this.seleccionarBoton(0);
@@ -120,6 +169,7 @@ class MenuScene extends Phaser.Scene {
 
   crearSubMenuPersonajes() {
     this.contenedorPersonajes = this.add.container(0, 0).setVisible(false);
+<<<<<<< HEAD
 
     const cx = GAME_WIDTH / 2;
     const cy = GAME_HEIGHT / 2;
@@ -170,6 +220,30 @@ class MenuScene extends Phaser.Scene {
       });
       this.botonesPersonajes.push(btn);
       this.contenedorPersonajes.add(btn);
+=======
+    const fondo = this.add.rectangle(GAME_WIDTH/2, GAME_HEIGHT/2, 500, 400, 0x000000, 0.9).setStrokeStyle(2, 0x38bdf8);
+    this.contenedorPersonajes.add(fondo);
+
+    const titulo = this.add.text(GAME_WIDTH/2, 220, 'ELIGE TU SUPERVIVIENTE', { fontSize: '28px', color: '#38bdf8', fontStyle: 'bold' }).setOrigin(0.5);
+    this.contenedorPersonajes.add(titulo);
+
+    const pjs = [
+        { id: 'hero', nombre: 'Soldado Alpha' },
+        { id: 'hero2', nombre: 'Cyber Vanguard' },
+        { id: 'volver', nombre: 'Volver' }
+    ];
+
+    pjs.forEach((p, i) => {
+        const btn = new Button(this, GAME_WIDTH / 2, 300 + (i * 70), {
+            text: p.nombre, width: 350, height: 55,
+            callback: () => {
+                if (p.id === 'volver') this.cambiarEstado("PRINCIPAL");
+                else this.seleccionarPersonaje(p.id);
+            }
+        });
+        this.botonesPersonajes.push(btn);
+        this.contenedorPersonajes.add(btn);
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     });
   }
 
@@ -184,6 +258,7 @@ class MenuScene extends Phaser.Scene {
   // ╚════════════════════════════════════════════════════════════════╝
 
   reproducirCinematicaHistoria() {
+<<<<<<< HEAD
     this.botonesPrincipales.forEach((b) => b.setVisible(false));
     this.contenedorPersonajes.setVisible(false);
     this.botones = [];
@@ -239,6 +314,41 @@ class MenuScene extends Phaser.Scene {
           },
         });
       },
+=======
+    this.botonesPrincipales.forEach(b => b.setVisible(false));
+    this.contenedorPersonajes.setVisible(false);
+    
+    const overlay = this.add.rectangle(GAME_WIDTH/2, GAME_HEIGHT/2, GAME_WIDTH, GAME_HEIGHT, 0x000000).setAlpha(0);
+    const textoHistoria = this.add.text(GAME_WIDTH/2, GAME_HEIGHT/2, "El mundo ha caído...\nPero la misión apenas comienza.", {
+        fontSize: '32px', color: '#ffffff', align: 'center', fontFamily: 'serif', fontStyle: 'italic'
+    }).setOrigin(0.5).setAlpha(0);
+
+    this.tweens.add({
+        targets: overlay,
+        alpha: 0.8,
+        duration: 1000,
+        onComplete: () => {
+            this.tweens.add({
+                targets: textoHistoria,
+                alpha: 1,
+                duration: 2000,
+                yoyo: true,
+                hold: 1500,
+                onComplete: () => {
+                    this.tweens.add({
+                        targets: overlay,
+                        alpha: 0,
+                        duration: 1000,
+                        onComplete: () => {
+                            overlay.destroy();
+                            textoHistoria.destroy();
+                            this.cambiarEstado("MISIONES");
+                        }
+                    });
+                }
+            });
+        }
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     });
   }
 
@@ -248,6 +358,7 @@ class MenuScene extends Phaser.Scene {
 
   crearSubMenuMisiones() {
     this.contenedorMisiones = this.add.container(0, 0).setVisible(false);
+<<<<<<< HEAD
 
     const cx = GAME_WIDTH / 2;
     const cy = GAME_HEIGHT / 2;
@@ -410,11 +521,40 @@ class MenuScene extends Phaser.Scene {
     this.contenedorHistoria.add(btnVolver);
   }
 
+=======
+    const fondo = this.add.rectangle(GAME_WIDTH/2, GAME_HEIGHT/2, 500, 450, 0x000000, 0.9).setStrokeStyle(2, 0x4a2a6f);
+    this.contenedorMisiones.add(fondo);
+
+    const titulo = this.add.text(GAME_WIDTH/2, 200, 'OBJETIVOS DISPONIBLES', { fontSize: '28px', color: '#a855f7', fontStyle: 'bold' }).setOrigin(0.5);
+    this.contenedorMisiones.add(titulo);
+
+    const misiones = [
+        { id: 1, nombre: 'Misión 1: El Robot Jefe' },
+        { id: 2, nombre: 'Misión 2: (Bloqueado)' },
+        { id: 3, nombre: 'Misión 3: (Bloqueado)' },
+        { id: 'volver', nombre: 'Volver al Menú' }
+    ];
+
+    misiones.forEach((m, i) => {
+        const btn = new Button(this, GAME_WIDTH / 2, 280 + (i * 70), {
+            text: m.nombre, width: 380, height: 55,
+            callback: () => {
+                if (m.id === 'volver') this.cambiarEstado("PRINCIPAL");
+                else if (m.id === 1) this.iniciarMision(m.id);
+            }
+        });
+        this.botonesMisiones.push(btn);
+        this.contenedorMisiones.add(btn);
+    });
+  }
+
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
   // ╔════════════════════════════════════════════════════════════════╗
   // ║ CONTROL DE ESTADOS Y NAVEGACIÓN
   // ╚════════════════════════════════════════════════════════════════╝
 
   cambiarEstado(nuevoEstado) {
+<<<<<<< HEAD
     if (this.navegacionBloqueada && nuevoEstado !== "PRINCIPAL") {
       return;
     }
@@ -454,14 +594,45 @@ class MenuScene extends Phaser.Scene {
         this.contenedorHistoria.setVisible(true);
         this.botones = this.botonesHistoria;
         break;
+=======
+    console.log(`[MenuScene] Cambio de estado: ${this.estado} → ${nuevoEstado}`);
+    
+    // Limpiar visibilidad actual
+    this.botonesPrincipales.forEach(b => b.setVisible(false));
+    this.contenedorPersonajes.setVisible(false);
+    this.contenedorMisiones.setVisible(false);
+
+    this.estado = nuevoEstado;
+
+    switch(nuevoEstado) {
+        case "PRINCIPAL":
+            this.botonesPrincipales.forEach(b => b.setVisible(true));
+            this.botones = this.botonesPrincipales;
+            break;
+        case "PERSONAJE":
+            this.contenedorPersonajes.setVisible(true);
+            this.botones = this.botonesPersonajes;
+            break;
+        case "CINEMATICA":
+            this.reproducirCinematicaHistoria();
+            return; // No hay botones en cinemática
+        case "MISIONES":
+            this.contenedorMisiones.setVisible(true);
+            this.botones = this.botonesMisiones;
+            break;
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     }
 
     this.seleccionarBoton(0);
   }
 
   cambiarSeleccion(dir) {
+<<<<<<< HEAD
     if (this.estado === "CINEMATICA" || this.navegacionBloqueada) return;
     if (!this.botones || this.botones.length === 0) return;
+=======
+    if (this.estado === "CINEMATICA") return;
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     let nuevo = this.botonesIndice + dir;
     if (nuevo < 0) nuevo = this.botones.length - 1;
     if (nuevo >= this.botones.length) nuevo = 0;
@@ -469,6 +640,7 @@ class MenuScene extends Phaser.Scene {
   }
 
   seleccionarBoton(indice) {
+<<<<<<< HEAD
     if (this.botones[this.botonesIndice])
       this.botones[this.botonesIndice].onHoverOut();
     this.botonesIndice = indice;
@@ -481,16 +653,32 @@ class MenuScene extends Phaser.Scene {
     if (!this.botones || this.botones.length === 0) return;
     if (this.botones[this.botonesIndice]) {
       this.botones[this.botonesIndice].simulateClick();
+=======
+    if (this.botones[this.botonesIndice]) this.botones[this.botonesIndice].onHoverOut();
+    this.botonesIndice = indice;
+    if (this.botones[this.botonesIndice]) this.botones[this.botonesIndice].onHover();
+  }
+
+  confirmarSeleccion() {
+    if (this.estado === "CINEMATICA") return;
+    if (this.botones[this.botonesIndice]) {
+        this.botones[this.botonesIndice].simulateClick();
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     }
   }
 
   manejarEsc() {
+<<<<<<< HEAD
     if (this.estado === "HISTORIA") {
       this.cambiarEstado("MISIONES");
       return;
     }
     if (this.estado === "PERSONAJE" || this.estado === "MISIONES") {
       this.cambiarEstado("PRINCIPAL");
+=======
+    if (this.estado === "PERSONAJE" || this.estado === "MISIONES") {
+        this.cambiarEstado("PRINCIPAL");
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
     }
   }
 
@@ -499,6 +687,7 @@ class MenuScene extends Phaser.Scene {
   // ╚════════════════════════════════════════════════════════════════╝
 
   iniciarMision(id) {
+<<<<<<< HEAD
     if (this.navegacionBloqueada) return;
     this.navegacionBloqueada = true;
     this.registry.set("mission", id);
@@ -530,6 +719,26 @@ class MenuScene extends Phaser.Scene {
     this.navegacionBloqueada = true;
     this.cameras.main.fadeOut(500);
     this.time.delayedCall(500, () => this.scene.start("CreditsScene"));
+=======
+    this.registry.set("mission", id);
+    this.cameras.main.fadeOut(500);
+    this.time.delayedCall(500, () => this.scene.start('PreloadScene'));
+  }
+
+  continuarJuego() {
+    const last = localStorage.getItem('last_mission') || 1;
+    this.iniciarMision(parseInt(last));
+  }
+
+  irAjustes() {
+    this.cameras.main.fadeOut(500);
+    this.time.delayedCall(500, () => this.scene.start('SettingsScene'));
+  }
+
+  irCreditos() {
+    this.cameras.main.fadeOut(500);
+    this.time.delayedCall(500, () => this.scene.start('CreditsScene'));
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
   }
 
   salirJuego() {

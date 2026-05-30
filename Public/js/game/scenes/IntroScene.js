@@ -35,6 +35,7 @@ class IntroScene extends Phaser.Scene {
         console.log('[IntroScene] ♫ Música iniciada');
     } catch (e) { console.error("Error Audio:", e); }
 
+<<<<<<< HEAD
     // 2. Sprite principal: escala la intro nativa al mundo lógico sin deformar
     const introScale = Math.min(
       GAME_WIDTH / INTRO_NATIVE_WIDTH,
@@ -47,6 +48,11 @@ class IntroScene extends Phaser.Scene {
         INTRO_NATIVE_HEIGHT * introScale,
       )
       .setDepth(1000);
+=======
+    // 2. Sprite Principal (1280x720)
+    this.spriteIntro = this.add.sprite(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'introParte1');
+    this.spriteIntro.setDisplaySize(1280, 720).setDepth(1000);
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
 
     // 3. Crear TODAS las animaciones (Tu lógica, pero con un pequeño delay para evitar crash)
     console.log('[IntroScene] → Creando animaciones...');
@@ -90,6 +96,7 @@ class IntroScene extends Phaser.Scene {
   }
 
   crearUITextoSalto() {
+<<<<<<< HEAD
     const margenInferior = Math.max(48, Math.round(GAME_HEIGHT * 0.06));
     const texto = this.add
       .text(
@@ -107,6 +114,11 @@ class IntroScene extends Phaser.Scene {
       yoyo: true,
       repeat: -1,
     });
+=======
+    const texto = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT - 60, 'PRESIONA ENTER PARA SALTAR', 
+    { fontSize: '20px', color: '#ffffff' }).setOrigin(0.5).setDepth(5000);
+    this.tweens.add({ targets: texto, alpha: 0.3, duration: 600, yoyo: true, repeat: -1 });
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
   }
 
   irAlMenu() {

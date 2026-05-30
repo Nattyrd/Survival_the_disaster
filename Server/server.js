@@ -36,7 +36,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+<<<<<<< HEAD
   res.redirect("/game");
+=======
+    res.redirect("/game");
+>>>>>>> f56e963dc720d817425a19093f927a1d375d11b0
 });
 
 app.get("/game", (req, res) => {
