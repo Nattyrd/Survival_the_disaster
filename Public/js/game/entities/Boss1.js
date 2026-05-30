@@ -292,7 +292,7 @@ class Boss1 {
         this.stopMovement();
 
         const { width, height } = this.scene.scale;
-        const margin = 150;
+        const margin = MISSION_WORLD_MARGIN;
         const side = player.sprite.x < width / 2 ? 1 : -1;
         const targetX = Phaser.Math.Clamp(
             this.sprite.x + side * Phaser.Math.Between(160, 260),

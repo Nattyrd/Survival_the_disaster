@@ -1,0 +1,94 @@
+{
+  "scenes": [
+    {
+      "id": "escena_1",
+      "background": "vn_campus_noche",
+      "music": "vn_ambient_1",
+      "steps": [
+        { "speaker": "Narrador", "text": "Año 2028.", "effect": "fade_in" },
+        { "speaker": "Narrador", "text": "Aquella mañana parecía igual a cualquier otra." },
+        { "speaker": "Narrador", "text": "Pero nadie imaginaba que ese día cambiaría el destino de la humanidad." }
+      ]
+    },
+    {
+      "id": "escena_2",
+      "background": "vn_vista_u",
+      "steps": [
+        { "speaker": "Narrador", "text": "La tecnología se había vuelto indispensable." },
+        { "speaker": "Narrador", "text": "Robots, inteligencia artificial y automatización formaban parte de la vida cotidiana." },
+        { "speaker": "Narrador", "text": "Sin embargo..." },
+        { "speaker": "Narrador", "text": "Algo extraño comenzaba a despertar." }
+      ]
+    },
+    {
+      "id": "escena_3",
+      "background": "vn_entrada_campus",
+      "steps": [
+        { "speaker": "Dan", "text": "Por fin llegué.", "char": "dan_normal", "position": "center", "action": "enter" },
+        { "speaker": "Dan", "text": "Esta universidad es increíble." },
+        { "speaker": "Dan", "text": "Voy a dar lo mejor de mí." }
+      ]
+    },
+    {
+      "id": "escena_4",
+      "background": "vn_restaurante",
+      "steps": [
+        { "speaker": "Narrador", "text": "Restaurante universitario.", "action": "clear_chars" },
+        { "speaker": "Mika", "text": "...", "char": "mika_sentada", "position": "right", "action": "enter" },
+        { "speaker": "Dan", "text": "¿Está ocupado este asiento?", "char": "dan_normal", "position": "left", "action": "enter" },
+        { "speaker": "Mika", "text": "No. Puedes sentarte." },
+        { "speaker": "Dan", "text": "Gracias." }
+      ]
+    },
+    {
+      "id": "escena_5",
+      "steps": [
+        { "speaker": "Mika", "text": "¿Eres nuevo?" },
+        { "speaker": "Dan", "text": "¿Se nota mucho?" },
+        { "speaker": "Mika", "text": "Un poco." },
+        { "speaker": "Dan", "text": "Me llamo Dan." },
+        { "speaker": "Mika", "text": "Mika Aoyama. Mucho gusto." }
+      ]
+    },
+    {
+      "id": "escena_6",
+      "steps": [
+        { "speaker": "Mika", "text": "¿Qué estudias?" },
+        { "speaker": "Dan", "text": "Ingeniería Robótica." },
+        { "speaker": "Mika", "text": "Suena interesante." },
+        { "speaker": "Dan", "text": "¿Y tú?" },
+        { "speaker": "Mika", "text": "Comunicación e investigación tecnológica." }
+      ]
+    },
+    {
+      "id": "escena_7",
+      "steps": [
+        { "speaker": "Narrador", "text": "De repente, las luces comienzan a parpadear.", "effect": "shake", "sound": "electrical_buzz" },
+        { "speaker": "Estudiante", "text": "¿Qué está pasando?", "char": "student_extra", "position": "center", "action": "enter" }
+      ]
+    },
+    {
+      "id": "escena_8",
+      "background": "vn_interferencias",
+      "steps": [
+        { "speaker": "Narrador", "text": "Fue entonces cuando todo comenzó.", "action": "clear_chars" }
+      ]
+    },
+    {
+      "id": "escena_9",
+      "background": "vn_explosion",
+      "steps": [
+        { "speaker": "Narrador", "text": "¡BOOM!", "effect": "flash", "sound": "explosion" },
+        { "speaker": "Mika", "text": "¿Qué fue eso?", "char": "mika_surprise", "position": "right", "action": "enter" },
+        { "speaker": "Dan", "text": "¡Vamos afuera!", "char": "dan_surprise", "position": "left", "action": "enter" }
+      ]
+    },
+    {
+      "id": "escena_10",
+      "background": "vn_cielo_oscuro",
+      "steps": [
+        { "speaker": "Narrador", "text": "El Proyecto Aetherion había comenzado.", "action": "clear_chars", "effect": "fade_out" }
+      ]
+    }
+  ]
+}

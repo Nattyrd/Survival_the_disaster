@@ -24,14 +24,46 @@ class BootScene extends Phaser.Scene {
         // ║   CARGA TOTAL (Tu código funcional)   ║
         // ╚════════════════════════════════════════╝
         this.load.audio('introMusic', '/assets/audio/intro2.mp3');
+        this.load.audio('selectMusic', '/assets/audio/seleccionPersonajes.mp3'); // Added for selection
         this.load.image('menuBg', '/assets/menu/ScreenMainGame.png');
 
+        // ► SELECCIÓN DE PERSONAJE BG
+        this.load.multiatlas('selectPlayerBG', '/assets/seleccion de personajes/selectPlayer.json', '/assets/seleccion de personajes');
+
+        // ╔════════════════════════════════════════╗
+        // ║   OPENING ORIGINAL (RESTAURADO)       ║
+        // ╚════════════════════════════════════════╝
         for (let i = 1; i <= 6; i++) {
             const clave = `introParte${i}`;
             const rutaJSON = `/assets/intro/intro_parte${i}.json`;
             this.load.multiatlas(clave, rutaJSON, '/assets/intro');
-            console.log(`[BootScene] → Cargando: ${clave}`);
         }
+
+        // ╔════════════════════════════════════════╗
+        // ║   NOVELA VISUAL (PROYECTO AETHERION)  ║
+        // ╚════════════════════════════════════════╝
+        this.load.json('intro_script', '/assets/intro/intro_script.json');
+        
+        // Backgrounds VN (Usando tus nombres de archivo reales)
+        this.load.image('vn_campus_noche', '/assets/novela/edicioNoche.png');
+        this.load.image('vn_vista_u', '/assets/novela/vistaFacultad.png');
+        this.load.image('vn_entrada_campus', '/assets/novela/Entrada a la U.png');
+        this.load.image('vn_restaurante', '/assets/novela/cafeteria.png');
+        this.load.image('vn_interferencias', '/assets/novela/interferencia.png');
+        this.load.image('vn_explosion', '/assets/novela/explosion.png');
+        this.load.image('vn_cielo_oscuro', '/assets/novela/edicioNoche.png');
+
+        // Characters VN (Usando tus nombres de archivo reales)
+        this.load.image('dan_normal', '/assets/novela/calmado.png');
+        this.load.image('mika_sentada', '/assets/novela/calmada.png');
+        this.load.image('mika_surprise', '/assets/novela/sorprendida.png');
+        this.load.image('dan_surprise', '/assets/novela/sorprendido.png');
+        this.load.image('student_extra', '/assets/novela/estudiante extra.png');
+
+        // Audio VN
+        this.load.audio('vn_ambient_1', '/assets/audio/intro.mp3');
+        this.load.audio('explosion', '/assets/bgm/sonidoExplosion.mp3');
+        this.load.audio('electrical_buzz', '/assets/audio/intro2.mp3');
     }
 
     create() {

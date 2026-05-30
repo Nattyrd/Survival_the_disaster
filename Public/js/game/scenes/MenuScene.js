@@ -22,12 +22,41 @@ class MenuScene extends Phaser.Scene {
     console.log('[MenuScene] → Iniciando MenuScene v2');
     this.cameras.main.setBackgroundColor("#000000");
 
-    // Fondo
+    // ► Crear Animación de Selección (si no existe)
+    if (!this.anims.exists('selectPlayerAnim')) {
+      this.anims.create({
+        key: 'selectPlayerAnim',
+        frames: this.anims.generateFrameNames('selectPlayerBG', {
+          start: 1, end: 125, zeroPad: 3,
+          prefix: 'ezgif-frame-', suffix: '.jpg'
+        }),
+        frameRate: 24,
+        repeat: -1
+      });
+    }
+
+    // ► Música de Fondo
+    if (!this.sound.get('bgMusic')) {
+      this.bgMusic = this.sound.add('introMusic', { loop: true, volume: 0.5 });
+      this.selectMusic = this.sound.add('selectMusic', { loop: true, volume: 0.5 });
+      this.bgMusic.play();
+    } else {
+      this.bgMusic = this.sound.get('introMusic');
+      this.selectMusic = this.sound.get('selectMusic');
+    }
+
+    // Fondo Normal
     try {
       if (this.textures.exists('menuBg')) {
-        this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'menuBg').setDepth(-100);
+        this.menuBg = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'menuBg').setDepth(-100);
       }
     } catch (e) {}
+
+    // Fondo Animado Selección (oculto por defecto)
+    this.selectBg = this.add.sprite(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'selectPlayerBG')
+      .setDepth(-90)
+      .setVisible(false)
+      .setDisplaySize(GAME_WIDTH, GAME_HEIGHT);
 
     // Inicializar Contenedores de Submenús
     this.crearMenuPrincipal();
@@ -48,10 +77,11 @@ class MenuScene extends Phaser.Scene {
   // ╚════════════════════════════════════════════════════════════════╝
 
   crearMenuPrincipal() {
-    const posY = [350, 420, 490, 560, 630];
-    const textos = ['Empezar Aventura', 'Continuar', 'Ajustes', 'Créditos', 'Salir'];
+    const posY = [320, 385, 450, 515, 580, 645];
+    const textos = ['Empezar Aventura', 'Seleccionar Misión', 'Continuar', 'Ajustes', 'Créditos', 'Salir'];
     const callbacks = [
         () => this.cambiarEstado("PERSONAJE"),
+        () => this.cambiarEstado("MISIONES"),
         () => this.continuarJuego(),
         () => this.irAjustes(),
         () => this.irCreditos(),
@@ -74,21 +104,35 @@ class MenuScene extends Phaser.Scene {
 
   crearSubMenuPersonajes() {
     this.contenedorPersonajes = this.add.container(0, 0).setVisible(false);
-    const fondo = this.add.rectangle(GAME_WIDTH/2, GAME_HEIGHT/2, 500, 400, 0x000000, 0.9).setStrokeStyle(2, 0x38bdf8);
-    this.contenedorPersonajes.add(fondo);
 
-    const titulo = this.add.text(GAME_WIDTH/2, 220, 'ELIGE TU SUPERVIVIENTE', { fontSize: '28px', color: '#38bdf8', fontStyle: 'bold' }).setOrigin(0.5);
+    // ► Configuración de Layout: Aquí puedes mover todo libremente
+    const layout = {
+      titulo: { x: GAME_WIDTH / 2, y: 40 },
+      personajes: [
+        { id: 'hero',   nombre: 'DAN',    x: 425, y: 690 },
+        { id: 'hero2',  nombre: 'MIKA',   x: 850, y: 690 },
+        { id: 'volver', nombre: 'VOLVER', x: 1100, y: 50 }
+      ]
+    };
+
+    // Crear Título
+    const titulo = this.add.text(layout.titulo.x, layout.titulo.y, 'SELECCIONA TU HÉROE', { 
+        fontSize: '42px',
+        backgroundColor: '#4a2a6f', 
+        color: '#ffffff', 
+        fontStyle: 'bold',
+        stroke: '#38bdf8',
+        strokeThickness: 6,
+        shadow: { blur: 10, color: '#000', fill: true }
+    }).setOrigin(0.5);
     this.contenedorPersonajes.add(titulo);
 
-    const pjs = [
-        { id: 'hero', nombre: 'Soldado Alpha' },
-        { id: 'hero2', nombre: 'Cyber Vanguard' },
-        { id: 'volver', nombre: 'Volver' }
-    ];
-
-    pjs.forEach((p, i) => {
-        const btn = new Button(this, GAME_WIDTH / 2, 300 + (i * 70), {
-            text: p.nombre, width: 350, height: 55,
+    // Crear Botones desde el layout
+    layout.personajes.forEach((p) => {
+        const btn = new Button(this, p.x, p.y, {
+            text: p.nombre, 
+            width: (p.id === 'volver') ? 100 : 250, 
+            height: 40,
             callback: () => {
                 if (p.id === 'volver') this.cambiarEstado("PRINCIPAL");
                 else this.seleccionarPersonaje(p.id);
@@ -102,7 +146,13 @@ class MenuScene extends Phaser.Scene {
   seleccionarPersonaje(id) {
     console.log(`[MenuScene] Personaje seleccionado: ${id}`);
     this.registry.set("selectedCharacter", id);
-    this.cambiarEstado("CINEMATICA");
+    this.registry.set("mission", 1); // <--- IMPORTANTE: Iniciar en Misión 1
+    
+    // ► Transición a Novela Visual (Proyecto Aetherion)
+    this.cameras.main.fadeOut(1000);
+    this.time.delayedCall(1000, () => {
+        this.scene.start('AetherionCinema');
+    });
   }
 
   // ╔════════════════════════════════════════════════════════════════╗
@@ -160,8 +210,8 @@ class MenuScene extends Phaser.Scene {
 
     const misiones = [
         { id: 1, nombre: 'Misión 1: El Robot Jefe' },
-        { id: 2, nombre: 'Misión 2: (Bloqueado)' },
-        { id: 3, nombre: 'Misión 3: (Bloqueado)' },
+        { id: 2, nombre: 'Misión 2: Titán MK-3' },
+        { id: 3, nombre: 'Misión 3: Andronimus' },
         { id: 'volver', nombre: 'Volver al Menú' }
     ];
 
@@ -170,7 +220,7 @@ class MenuScene extends Phaser.Scene {
             text: m.nombre, width: 380, height: 55,
             callback: () => {
                 if (m.id === 'volver') this.cambiarEstado("PRINCIPAL");
-                else if (m.id === 1) this.iniciarMision(m.id);
+                else this.iniciarMision(m.id);
             }
         });
         this.botonesMisiones.push(btn);
@@ -185,6 +235,25 @@ class MenuScene extends Phaser.Scene {
   cambiarEstado(nuevoEstado) {
     console.log(`[MenuScene] Cambio de estado: ${this.estado} → ${nuevoEstado}`);
     
+    // ► Gestión de Fondos y Música
+    if (nuevoEstado === "PERSONAJE") {
+      if (this.menuBg) this.menuBg.setVisible(false);
+      this.selectBg.setVisible(true).play('selectPlayerAnim');
+      
+      // Transición de música
+      if (this.bgMusic.isPlaying) this.bgMusic.stop();
+      if (!this.selectMusic.isPlaying) this.selectMusic.play();
+    } else {
+      if (this.menuBg) this.menuBg.setVisible(true);
+      this.selectBg.setVisible(false).stop();
+      
+      // Volver a música principal si venimos de personaje
+      if (this.estado === "PERSONAJE") {
+        if (this.selectMusic.isPlaying) this.selectMusic.stop();
+        if (!this.bgMusic.isPlaying) this.bgMusic.play();
+      }
+    }
+
     // Limpiar visibilidad actual
     this.botonesPrincipales.forEach(b => b.setVisible(false));
     this.contenedorPersonajes.setVisible(false);

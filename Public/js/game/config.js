@@ -28,6 +28,7 @@ const GameConfig = {
         BootScene, 
         IntroScene, 
         MenuScene, 
+        AetherionCinema,
         SettingsScene, 
         CreditsScene, 
         PreloadScene, 

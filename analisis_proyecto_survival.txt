@@ -1,0 +1,86 @@
+================================================================================
+          REPORTE TÉCNICO DE ANÁLISIS: SURVIVAL THE DISASTER
+================================================================================
+
+1. ARQUITECTURA GENERAL DEL PROYECTO
+--------------------------------------------------------------------------------
+- Motor de Juego: Phaser 3.60.0 (Framework robusto para juegos 2D en HTML5).
+- Entorno de Ejecución: Aplicación de escritorio multiplataforma vía Electron.
+- Backend: Servidor Node.js con Express para la gestión de recursos estáticos.
+- Estructura de Datos: Sistema de escenas (Scenes) que gestiona el flujo del 
+  juego: Boot -> Preload -> Menu -> GameScene -> Win/GameOver.
+
+2. LÓGICA DE JUEGO (GameScene.js)
+--------------------------------------------------------------------------------
+El núcleo del juego utiliza un sistema de misiones basado en el Registry de Phaser.
+- Sistema de Misiones:
+  * Misión 1: Enfrentamiento contra Robot Jefe (Boss1).
+  * Misión 2: Enfrentamiento contra Titán MK-3 (Boss3).
+  * Misión 3: Enfrentamiento contra Andronimus (Boss2).
+- Arena de Combate: Se define un "Mundo Físico" dinámico según la resolución de 
+  pantalla, donde tanto el jugador como el jefe están limitados por colisiones 
+  perimetrales.
+- Gestión de HUD: Interfaz en tiempo real que comunica los cambios de vida (HP) 
+  del jugador y el jefe mediante eventos personalizados.
+
+3. MECÁNICAS DEL JUGADOR (Player.js)
+--------------------------------------------------------------------------------
+- Movimiento: Sistema de 8 direcciones (WASD) con normalización de velocidad 
+  para evitar desplazamientos diagonales más rápidos.
+- Combate:
+  * Ataque: Disparo de proyectiles con Click Derecho.
+  * Armas: Sistema de equipamiento/alternancia de armas (Tecla 2).
+  * Salto: Mecánica de salto con Tweens que sincroniza el cuerpo físico para 
+    evitar desajustes en las colisiones.
+- Estados: Manejo de invulnerabilidad temporal tras recibir daño y sistema de 
+  animaciones complejas (Stand, Walk, Jump, Attack, Death) con y sin arma.
+
+4. INTELIGENCIA ARTIFICIAL Y JEFES (Bosses)
+--------------------------------------------------------------------------------
+Todos los jefes comparten una arquitectura de "IA Basada en Estados y Agresión":
+
+A. Lógica de "Think" (Pensamiento):
+   - Los jefes evalúan la situación cada X milisegundos.
+   - Calculan una variable de "Agresión" (1 - % HP restante).
+   - A menor HP, aumentan los pesos de ataque, velocidad de proyectiles y 
+     disminuyen los enfriamientos (cooldowns).
+
+B. Jefes Específicos:
+   1. Robot Jefe (Misión 1):
+      - Especialidad: Proyectiles inteligentes (homing) y reposicionamiento aéreo.
+      - Comportamiento: Persecución constante y ataques de proyectiles tipo 1 y 2.
+
+   2. Titán MK-3 (Misión 2):
+      - Especialidad: Ataque de Área (Spread Volley).
+      - Mecánica Única: Lanza ráfagas de balas en abanico que aumentan en 
+        cantidad con cada uso del especial.
+
+   3. Andronimus (Misión 3):
+      - Especialidad: Rayos de choque (Shockwaves) de alto daño.
+      - Mecánica Única: Dispara rayos rectos desde cañones duales. Requiere 
+        esquivar con precisión debido a la velocidad de los proyectiles.
+
+5. SISTEMA DE COLISIONES Y FÍSICA
+--------------------------------------------------------------------------------
+- Motor Arcade Physics: Utilizado para proyectiles y cuerpos sólidos.
+- Optimización: Sistema de "Lifespan" y límites de mundo para destruir 
+  proyectiles inactivos y liberar memoria (Object Pooling manual mediante Grupos).
+- Detección de Daño: Gestión mediante Overlaps dinámicos que validan estados 
+  (muerto, invulnerable, pausado) antes de aplicar daño.
+
+6. ASSETS Y AUDIO
+--------------------------------------------------------------------------------
+- Gráficos: Spritesheets generados en Aseprite con múltiples capas de animación.
+- Audio: Gestión centralizada de efectos de sonido (SFX) para disparos, pasos y 
+  explosiones, integrados directamente en los disparadores de la IA y el Jugador.
+
+7. CONCLUSIÓN DEL EXPERTO
+--------------------------------------------------------------------------------
+El proyecto presenta una estructura modular sólida. La separación de entidades en 
+clases independientes permite una escalabilidad fácil para añadir nuevos jefes o 
+niveles. El sistema de agresión dinámica en la IA asegura una curva de dificultad 
+progresiva que mantiene el interés del jugador durante el combate.
+
+================================================================================
+FIN DEL REPORTE
+================================================================================

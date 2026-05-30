@@ -30,9 +30,9 @@ class IntroScene extends Phaser.Scene {
 
     // 1. Audio (Sincronización inmediata como en tu código)
     try {
-        this.introMusic = this.sound.add('introMusic', { volume: 0.5, loop: false });
+        this.introMusic = this.sound.add('introMusic', { volume: 0.5, loop: true });
         this.introMusic.play();
-        console.log('[IntroScene] ♫ Música iniciada');
+        console.log('[IntroScene] ♫ Música iniciada (Loop activado)');
     } catch (e) { console.error("Error Audio:", e); }
 
     // 2. Sprite Principal (1280x720)
@@ -60,8 +60,8 @@ class IntroScene extends Phaser.Scene {
 
   reproducirSiguienteParte() {
     if (this.parteActual >= this.secuenciaPartes.length) {
-      this.irAlMenu();
-      return;
+      console.log('[IntroScene] ↺ Reiniciando ciclo de intro');
+      this.parteActual = 0;
     }
 
     const parte = this.secuenciaPartes[this.parteActual];
