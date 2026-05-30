@@ -1,0 +1,3286 @@
+{
+	"textures": [
+		{
+			"image": "intro_parte6-0.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-001.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-002.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-003.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-004.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-005.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-006.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-1.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-007.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-008.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-009.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-010.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-011.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-012.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-2.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-013.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-014.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-015.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-016.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-017.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-018.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-3.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-019.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-020.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-021.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-022.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-023.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-024.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-4.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-025.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-026.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-027.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-028.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-029.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-030.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-5.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-031.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-032.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-033.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-034.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-035.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-036.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-6.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-037.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-038.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-039.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-040.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-041.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-042.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-7.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-043.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-044.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-045.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-046.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-047.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-048.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-8.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-049.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-050.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-051.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-052.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-053.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-054.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-9.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-055.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-056.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-057.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-058.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-059.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-060.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-10.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-061.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-062.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-063.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-064.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-065.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-066.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-11.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-067.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-068.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-069.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-070.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-071.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-072.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-12.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-073.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-074.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-075.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-076.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-077.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-078.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-13.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-079.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-080.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-081.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-082.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-083.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-084.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-14.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-085.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-086.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-087.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-088.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-089.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-090.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-15.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-091.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-092.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-093.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-094.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-095.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-096.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-16.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-097.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-098.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-099.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-100.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-101.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-102.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-17.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-103.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-104.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-105.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-106.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-107.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-108.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-18.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-109.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-110.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-111.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-112.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-113.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-114.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-19.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-115.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-116.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-117.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-118.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-119.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-120.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-20.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-121.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-122.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-123.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-124.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-125.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-126.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-21.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 3260
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-127.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-128.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-129.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-130.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-131.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-132.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-133.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-134.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 2176,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		},
+		{
+			"image": "intro_parte6-22.jpg",
+			"format": "RGB888",
+			"size": {
+				"w": 3854,
+				"h": 2174
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ezgif-frame-135.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-136.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-137.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 4,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-138.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 4,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-139.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-140.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-141.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-142.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-143.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				},
+				{
+					"filename": "ezgif-frame-144.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1920,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1920,
+						"h": 1080
+					},
+					"frame": {
+						"x": 1930,
+						"y": 1090,
+						"w": 1920,
+						"h": 1080
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:38691d62781e0f4691d4118802d85400:49b2030e7f544cfe280a8939b55f2453:f464683c75c4154f5ed32e10c757405c$"
+	}
+}

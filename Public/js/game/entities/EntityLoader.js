@@ -10,7 +10,8 @@ const EntityLoader = {
 
         manifest.sheets.forEach((sheet) => {
             const key = this.textureKey(manifest.id, sheet.key);
-            scene.load.spritesheet(key, `${manifest.basePath}/${sheet.file}`, {
+            const url = sheet.path || `${manifest.basePath}/${sheet.file}`;
+            scene.load.spritesheet(key, url, {
                 frameWidth: sheet.frameWidth || SPRITE_FRAME_SIZE,
                 frameHeight: sheet.frameHeight || SPRITE_FRAME_SIZE
             });

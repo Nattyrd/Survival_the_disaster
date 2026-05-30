@@ -1,10 +1,15 @@
 const GameConfig = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS, // CAMBIO CRÍTICO: De AUTO (WebGL) a CANVAS (RAM del sistema)
+    // Tamaño lógico del juego; combate usa todo este rectángulo (ver constants.js).
     width: GAME_WIDTH,
     height: GAME_HEIGHT,
     parent: "game-container",
     backgroundColor: "#1e293b",
-    pixelArt: true,
+    pixelArt: false, // Falso para que las imágenes de la intro se vean suaves (Cine)
+    render: {
+        desynchronized: true, // Optimización de latencia estilo Aetherion
+        antialias: true
+    },
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
@@ -16,5 +21,19 @@ const GameConfig = {
             debug: false
         }
     },
-    scene: [BootScene, PreloadScene, GameScene, GameOverScene, WinScene]
+    audio: {
+        disableWebAudio: false
+    },
+    // ► Secuencia mejorada: Boot → Intro → Menú → Configuración/Créditos → Preload → Juego → Fin
+    scene: [
+        BootScene, 
+        IntroScene, 
+        MenuScene, 
+        SettingsScene, 
+        CreditsScene, 
+        PreloadScene, 
+        GameScene, 
+        GameOverScene, 
+        WinScene
+    ]
 };
