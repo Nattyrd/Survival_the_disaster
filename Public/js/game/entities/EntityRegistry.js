@@ -1,3 +1,4 @@
+/** Acceso de lectura a ENTITY_MANIFESTS y MISSION_MANIFESTS (AssetManifest.js). */
 const EntityRegistry = {
     manifests: ENTITY_MANIFESTS,
 

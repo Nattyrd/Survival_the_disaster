@@ -1,66 +1,96 @@
+/**
+ * ════════════════════════════════════════════════════════════════════════════════
+ * ESCENA: DERROTA (GAME OVER)
+ * ════════════════════════════════════════════════════════════════════════════════
+ */
+
 class GameOverScene extends Phaser.Scene {
-    constructor() {
-        super({ key: "GameOverScene" });
-    }
+  constructor() {
+    super({ key: "GameOverScene" });
+    this.navegando = false;
+  }
 
-    create() {
-        const { width, height } = this.scale;
-        const mission = this.registry.get("mission") || 1;
+  create() {
+    console.log("[GameOverScene] Creando pantalla de derrota");
+    this.navegando = false;
 
-        this.cameras.main.setBackgroundColor("#0f172a");
+    this.game.musicManager.stopAll();
 
-        this.add.rectangle(width / 2, height / 2, width, height, 0x000000, 0.75)
-            .setDepth(0);
+    const { width, height } = this.scale;
+    const mission = this.registry.get("mission") || 1;
+    const isWave = mission === MISSION_WAVE;
 
-        this.add.text(width / 2, height * 0.32, "GAME OVER", {
-            fontFamily: "Arial Black, Arial, sans-serif",
-            fontSize: "72px",
-            color: "#ef4444",
-            stroke: "#450a0a",
-            strokeThickness: 8
-        })
-            .setOrigin(0.5)
-            .setDepth(10);
+    // ► Fondo de Derrota
+    const bg = this.add.image(width / 2, height / 2, 'screen_lose');
+    const bgScale = Math.max(width / bg.width, height / bg.height);
+    bg.setScale(bgScale);
 
-        this.add.text(width / 2, height * 0.48, "El robot te ha derrotado", {
-            fontFamily: "Arial, sans-serif",
-            fontSize: "24px",
-            color: "#e2e8f0"
-        })
-            .setOrigin(0.5)
-            .setDepth(10);
+    // ► Cuadro de Resumen
+    const panelW = 500;
+    const panelH = 300;
+    const panelX = width / 2;
+    const panelY = height / 2 + 50;
 
-        const retry = this.add.text(width / 2, height * 0.62, "[ R ]  Reintentar misión", {
-            fontFamily: "Arial, sans-serif",
-            fontSize: "22px",
-            color: "#38bdf8"
-        })
-            .setOrigin(0.5)
-            .setDepth(10)
-            .setInteractive({ useHandCursor: true });
+    this.add.rectangle(panelX, panelY, panelW, panelH, 0x000000, 0.8)
+        .setStrokeStyle(3, 0xef4444);
 
-        const menu = this.add.text(width / 2, height * 0.7, "[ M ]  Menú principal", {
-            fontFamily: "Arial, sans-serif",
-            fontSize: "22px",
-            color: "#94a3b8"
-        })
-            .setOrigin(0.5)
-            .setDepth(10)
-            .setInteractive({ useHandCursor: true });
+    this.add.text(panelX, panelY - panelH / 2 + 40, isWave ? "FIN DE LA OLEADA" : "FALLO EN LA MISIÓN", {
+        fontFamily: "Arial Black", fontSize: "28px", color: "#ef4444"
+    }).setOrigin(0.5);
 
-        retry.on("pointerover", () => retry.setColor("#7dd3fc"));
-        retry.on("pointerout", () => retry.setColor("#38bdf8"));
-        menu.on("pointerover", () => menu.setColor("#cbd5e1"));
-        menu.on("pointerout", () => menu.setColor("#94a3b8"));
+    // Estadísticas
+    const totalDamage = this.registry.get("totalDamageInflicted") || 0;
+    const waveKills = this.registry.get("waveKills") || 0;
+    const charId = this.registry.get("selectedCharacter") || "hero";
+    const charName = charId === "hero" ? "DAN" : "MIKA";
 
-        retry.on("pointerdown", () => this.retry(mission));
-        menu.on("pointerdown", () => (window.location.href = "/"));
+    const statsConfig = { fontFamily: "Arial", fontSize: "22px", color: "#ffffff" };
+    
+    this.add.text(panelX - 180, panelY - 30, `Personaje:`, statsConfig);
+    this.add.text(panelX + 180, panelY - 30, charName, statsConfig).setOrigin(1, 0.5).setColor("#38bdf8");
 
-        this.input.keyboard.on("keydown-R", () => this.retry(mission));
-        this.input.keyboard.on("keydown-M", () => (window.location.href = "/"));
-    }
+    this.add.text(panelX - 180, panelY + 20, isWave ? `Eliminados:` : `Puntos (Daño):`, statsConfig);
+    this.add.text(panelX + 180, panelY + 20, isWave ? String(waveKills) : String(totalDamage), statsConfig).setOrigin(1, 0.5).setColor("#f97316");
 
-    retry(mission) {
-        window.location.href = `/game?mission=${mission}`;
-    }
+    this.add.text(panelX - 180, panelY + 70, isWave ? `Score:` : `Estado:`, statsConfig);
+    this.add.text(panelX + 180, panelY + 70, isWave ? String(totalDamage) : "DERROTADO", statsConfig).setOrigin(1, 0.5).setColor(isWave ? "#22c55e" : "#ef4444");
+
+    // ► BOTONES
+    const btnY = height * 0.9;
+    
+    new Button(this, width / 2 - 160, btnY, {
+        text: isWave ? "Reintentar Oleada" : "Reintentar", width: 280, height: 55,
+        callback: () => this.retry(mission)
+    });
+
+    new Button(this, width / 2 + 160, btnY, {
+        text: "Menú Principal", width: 280, height: 55, 
+        callback: () => this.irAlMenu()
+    });
+
+    this.cameras.main.fadeIn(1000);
+  }
+
+  retry(mission) {
+    if (this.navegando) return;
+    this.navegando = true;
+
+    // ► RESET DE PUNTUACIÓN AL REINTENTAR
+    this.registry.set("totalDamageInflicted", 0);
+    this.registry.set("waveKills", 0);
+
+    this.registry.set("mission", mission);
+    this.scene.start("PreloadScene");
+  }
+
+  irAlMenu() {
+    if (this.navegando) return;
+    this.navegando = true;
+    this.registry.set("attemptIncomplete", true);
+    this.scene.start("NameInputScene"); // Guardar intento antes de ir al menú
+  }
+
+  shutdown() {
+    this.input.keyboard.removeAllListeners();
+  }
 }

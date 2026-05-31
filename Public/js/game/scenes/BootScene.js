@@ -1,3 +1,9 @@
+/**
+ * BootScene — Primera escena tras cargar Phaser.
+ * 1) Precarga audio/imágenes del opening y menú
+ * 2) Inicializa SettingsManager, MusicManager, ScaleManager
+ * 3) Arranca IntroScene
+ */
 class BootScene extends Phaser.Scene {
     constructor() {
         super({ key: "BootScene" });
@@ -23,8 +29,12 @@ class BootScene extends Phaser.Scene {
         // ╔════════════════════════════════════════╗
         // ║   CARGA TOTAL (Tu código funcional)   ║
         // ╚════════════════════════════════════════╝
-        this.load.audio('introMusic', '/assets/audio/intro2.mp3');
-        this.load.audio('selectMusic', '/assets/audio/seleccionPersonajes.mp3'); // Added for selection
+        this.load.audio('introMusic', '/assets/audio/introOpeningCompleto.mp3'); // Restaurado para el Opening
+        this.load.audio('menuMusic', '/assets/audio/soundtrackMenu.mp3');  // Nueva para el Menú
+        this.load.audio('selectMusic', '/assets/audio/bgmselectPlayer.mp3'); 
+        this.load.audio('selectDan', '/assets/audio/selectDan.mp3');
+        this.load.audio('selectSfx', '/assets/audio/sfxselectPlayer.mp3');
+        this.load.audio('cinematicMusic', '/assets/audio/SoundtrackCinematica.mp3');
         this.load.image('menuBg', '/assets/menu/ScreenMainGame.png');
 
         // ► SELECCIÓN DE PERSONAJE BG
@@ -45,9 +55,9 @@ class BootScene extends Phaser.Scene {
         this.load.json('intro_script', '/assets/intro/intro_script.json');
         
         // Backgrounds VN (Usando tus nombres de archivo reales)
-        this.load.image('vn_campus_noche', '/assets/novela/edicioNoche.png');
-        this.load.image('vn_vista_u', '/assets/novela/vistaFacultad.png');
-        this.load.image('vn_entrada_campus', '/assets/novela/Entrada a la U.png');
+        this.load.image('vn_campus_noche', '/assets/novela/DiaNormal.png');
+        this.load.image('vn_vista_u', '/assets/novela/vidaFutura.png');
+        this.load.image('vn_entrada_campus', '/assets/novela/EntrdaUniversidad.jpg');
         this.load.image('vn_restaurante', '/assets/novela/cafeteria.png');
         this.load.image('vn_interferencias', '/assets/novela/interferencia.png');
         this.load.image('vn_explosion', '/assets/novela/explosion.png');
@@ -69,12 +79,27 @@ class BootScene extends Phaser.Scene {
     create() {
         console.log('[BootScene] ► Inicializando Boot');
 
+        // ► INICIALIZAR SISTEMA DE AJUSTES PROFESIONAL
+        this.game.settingsManager = new SettingsManager(this.game);
+        this.game.musicManager = new MusicManager(this.game);
+        ScaleManager.setup(this.game);
+        this.game.settingsManager.graphics.setupScaleListeners();
+
+        this.time.delayedCall(200, () => {
+            const sm = this.game.settingsManager;
+            if (sm.settings.fullscreen && !this.game.scale.isFullscreen) {
+                sm.settings.fullscreen = false;
+                sm.saveSettings();
+            }
+        });
+
         // ► Leer parámetros de URL (Arquitectura Aetherion)
         const params = new URLSearchParams(window.location.search);
         const mission = parseInt(params.get("mission") || "0", 10);
 
-        // ► Guardar misión en registro global
         this.registry.set("mission", mission);
+        this.registry.set("totalDamageInflicted", 0);
+        this.registry.set("attemptIncomplete", false);
 
         console.log(`[BootScene] → Misión detectada: ${mission}`);
         console.log('[BootScene] ✓ Todo cargado. Iniciando IntroScene');

@@ -98,6 +98,12 @@ class GestorAnimaciones {
     velFotogramas = 24,
     callbacks = {}
   ) {
+    // ► Evitar duplicados si la animación ya existe
+    if (escena.anims.exists(claveAnimacion)) {
+      console.log(`[GestorAnimaciones] ℹ "${claveAnimacion}" ya existe, saltando creación`)
+      return null;
+    }
+
     console.log(
       `[GestorAnimaciones] → Creando "${claveAnimacion}" desde "${claveTienda}"`
     )

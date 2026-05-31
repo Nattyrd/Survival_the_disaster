@@ -44,8 +44,8 @@ class Button extends Phaser.GameObjects.Container {
     // ► Agregar a escena
     scene.add.existing(this)
 
-    // ► Eventos del ratón
-    this.setInteractive(
+    // ► Interacción sobre el fondo del botón
+    this.background.setInteractive(
       new Phaser.Geom.Rectangle(
         -this.config.width / 2,
         -this.config.height / 2,
@@ -55,10 +55,63 @@ class Button extends Phaser.GameObjects.Container {
       Phaser.Geom.Rectangle.Contains
     )
 
-    this.on('pointerover', () => this.onHover())
-    this.on('pointerout', () => this.onHoverOut())
-    this.on('pointerdown', () => this.onPress())
-    this.on('pointerup', () => this.onRelease())
+    // ► Eventos del ratón/táctil
+    this.background.on('pointerover', () => this.onHover())
+    this.background.on('pointerout', () => this.onHoverOut())
+    this.background.on('pointerdown', () => this.onPress())
+    this.background.on('pointerup', () => this.onRelease())
+    this.background.on('pointerupoutside', () => this.onReleaseOutside())
+  }
+
+  _isAlive() {
+    return !!(
+      this.active &&
+      this.scene &&
+      this.scene.sys &&
+      this.background &&
+      this.background.active
+    )
+  }
+
+  _safeTween(config) {
+    if (!this._isAlive() || !this.scene.tweens) return null
+    return this.scene.tweens.add(config)
+  }
+
+  _resetVisual(animate = true) {
+    if (!this._isAlive()) return
+
+    this.isHovering = false
+    this.isPressed = false
+
+    this.background.clear()
+    this.background.fillStyle(
+      Phaser.Display.Color.HexStringToColor(this.config.colors.normal).color,
+      1
+    )
+    this.background.fillRect(
+      -this.config.width / 2,
+      -this.config.height / 2,
+      this.config.width,
+      this.config.height
+    )
+
+    this.glowGraphics.lineStyle(
+      2,
+      Phaser.Display.Color.HexStringToColor(this.config.colors.glow).color,
+      0.5
+    )
+
+    if (animate) {
+      this._safeTween({
+        targets: this,
+        scale: 1,
+        duration: 200,
+        ease: 'Quad.easeOut'
+      })
+    } else {
+      this.setScale(1)
+    }
   }
 
   /**
@@ -106,11 +159,10 @@ class Button extends Phaser.GameObjects.Container {
    * Evento: Ratón sobre el botón
    */
   onHover() {
-    if (!this.isEnabled) return
+    if (!this.isEnabled || !this._isAlive()) return
 
     this.isHovering = true
 
-    // ► Cambiar color de fondo
     this.background.clear()
     this.background.fillStyle(
       Phaser.Display.Color.HexStringToColor(this.config.colors.hover).color,
@@ -123,63 +175,27 @@ class Button extends Phaser.GameObjects.Container {
       this.config.height
     )
 
-    // ► Aumentar brillo del glow
     this.glowGraphics.lineStyle(3, Phaser.Display.Color.HexStringToColor(this.config.colors.glow).color, 1)
 
-    // ► Animación de escala
-    this.scene.tweens.add({
+    this._safeTween({
       targets: this,
       scale: 1.05,
       duration: 200,
       ease: 'Quad.easeOut'
     })
-
-    console.log(`[Button] ► Hover: ${this.config.text}`)
   }
 
-  /**
-   * Evento: Ratón sale del botón
-   */
   onHoverOut() {
-    if (!this.isEnabled) return
-
-    this.isHovering = false
-    this.isPressed = false
-
-    // ► Restaurar color normal
-    this.background.clear()
-    this.background.fillStyle(
-      Phaser.Display.Color.HexStringToColor(this.config.colors.normal).color,
-      1
-    )
-    this.background.fillRect(
-      -this.config.width / 2,
-      -this.config.height / 2,
-      this.config.width,
-      this.config.height
-    )
-
-    // ► Restaurar glow normal
-    this.glowGraphics.lineStyle(2, Phaser.Display.Color.HexStringToColor(this.config.colors.glow).color, 0.5)
-
-    // ► Animación de escala
-    this.scene.tweens.add({
-      targets: this,
-      scale: 1,
-      duration: 200,
-      ease: 'Quad.easeOut'
-    })
+    if (!this.isEnabled || !this._isAlive()) return
+    this._resetVisual(true)
   }
 
-  /**
-   * Evento: Presionar botón (mouse down)
-   */
   onPress() {
-    if (!this.isEnabled || !this.isHovering) return
+    if (!this.isEnabled || !this._isAlive()) return
 
     this.isPressed = true
+    this.isHovering = true
 
-    // ► Cambiar color de presión
     this.background.clear()
     this.background.fillStyle(
       Phaser.Display.Color.HexStringToColor(this.config.colors.press).color,
@@ -191,35 +207,35 @@ class Button extends Phaser.GameObjects.Container {
       this.config.width,
       this.config.height
     )
-
-    console.log(`[Button] ◄ Presionado: ${this.config.text}`)
   }
 
-  /**
-   * Evento: Soltar botón (mouse up)
-   */
   onRelease() {
-    if (!this.isEnabled) return
+    if (!this.isEnabled || !this._isAlive()) return
 
-    if (this.isPressed && this.isHovering) {
-      console.log(`[Button] ✓ Click: ${this.config.text}`)
+    const shouldClick = this.isPressed
+    this.isPressed = false
+
+    if (shouldClick) {
+      this._resetVisual(false)
       this.config.callback()
+      return
     }
 
-    this.isPressed = false
     this.onHoverOut()
+  }
+
+  onReleaseOutside() {
+    if (!this.isEnabled || !this._isAlive()) return
+    this._resetVisual(false)
   }
 
   /**
    * Simular click mediante teclado (ENTER)
    */
   simulateClick() {
-    if (!this.isEnabled) return
+    if (!this.isEnabled || !this._isAlive()) return
 
-    console.log(`[Button] ⌨️ Simulado: ${this.config.text}`)
-
-    // ► Animación visual de click
-    this.scene.tweens.add({
+    this._safeTween({
       targets: this,
       scale: 0.95,
       duration: 100,
@@ -227,7 +243,6 @@ class Button extends Phaser.GameObjects.Container {
       ease: 'Quad.easeOut'
     })
 
-    // ► Ejecutar callback
     this.config.callback()
   }
 
@@ -258,7 +273,9 @@ class Button extends Phaser.GameObjects.Container {
       this.config.height
     )
 
-    this.setInteractive(enabled)
+    if (this.background && this.background.setInteractive) {
+      this.background.setInteractive(enabled)
+    }
 
     console.log(`[Button] ${enabled ? '✓' : '✗'} ${this.config.text}`)
   }

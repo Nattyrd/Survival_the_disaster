@@ -2,47 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Juego — Partida</title>
-    <link rel="stylesheet" href="/css/game.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Survival the Disaster</title>
+    <link rel="stylesheet" href="/css/game.css?v=3.4" />
 </head>
 <body>
     <div id="game-container"></div>
 
     <script src="/phaser/phaser.min.js"></script>
-    <script src="/js/game/constants.js"></script>
+    <script src="/js/game/constants.js?v=3.6"></script>
     
     <!-- ► MANAGERS -->
-    <script src="/js/game/managers/AnimationManager.js"></script>
-    <script src="/js/game/managers/Button.js"></script>
+    <script src="/js/game/managers/AnimationManager.js?v=3.0"></script>
+    <script src="/js/game/managers/Button.js?v=3.4.1"></script>
+    <script src="/js/game/managers/MusicManager.js?v=3.3"></script>
+    <script src="/js/game/managers/TouchControls.js?v=3.2"></script>
+    <script src="/js/game/managers/ScaleManager.js?v=3.4.1"></script>
+    <script src="/js/game/managers/SettingsManager.js?v=3.4"></script>
     
     <!-- ► ASSETS & ENTITIES -->
-    <script src="/js/game/config/AssetManifest.js"></script>
-    <script src="/js/game/entities/EntityLoader.js"></script>
-    <script src="/js/game/entities/EntityRegistry.js"></script>
-    <script src="/js/game/entities/Player.js"></script>
-    <script src="/js/game/entities/Boss1.js"></script>
-    <script src="/js/game/entities/Mission2_Boss3.js"></script>
-    <script src="/js/game/entities/Mission3_Boss2.js"></script>
-    <script src="/js/game/entities/Destroyer.js"></script>
-    <script src="/js/game/entities/Enemy.js"></script>
-    <script src="/js/game/ui/Hud.js"></script>
-    <script src="/js/game/ui/DialogueBox.js"></script>
+    <script src="/js/game/config/AssetManifest.js?v=3.6"></script>
+    <script src="/js/game/entities/EntityLoader.js?v=3.0"></script>
+    <script src="/js/game/entities/EntityRegistry.js?v=3.0"></script>
+    <script src="/js/game/entities/Player.js?v=3.2"></script>
+    <script src="/js/game/entities/Mission1_Boss1.js?v=3.5"></script>
+    <script src="/js/game/entities/Mission2_Boss3.js?v=3.5"></script>
+    <script src="/js/game/entities/Mission3_Boss2.js?v=3.5"></script>
+    <!-- Modo Oleada usa Destroyer.js -->
+    <script src="/js/game/entities/Destroyer.js?v=3.6"></script>
+    <script src="/js/game/entities/Enemy.js?v=3.5"></script>
+    <script src="/js/game/ui/Hud.js?v=3.6"></script>
+    <script src="/js/game/ui/DialogueBox.js?v=3.0"></script>
     
-    <!-- ► ESCENAS (Orden: Boot → Intro → Menú → Configuración → Créditos → Cinema → Preload → Juego → Fin) -->
-    <script src="/js/game/scenes/BootScene.js"></script>
-    <script src="/js/game/scenes/IntroScene.js"></script>
-    <script src="/js/game/scenes/MenuScene.js"></script>
-    <script src="/js/game/scenes/AetherionCinema.js"></script>
-    <script src="/js/game/scenes/SettingsScene.js"></script>
-    <script src="/js/game/scenes/CreditsScene.js"></script>
-    <script src="/js/game/scenes/PreloadScene.js"></script>
-    <script src="/js/game/scenes/GameScene.js"></script>
-    <script src="/js/game/scenes/GameOverScene.js"></script>
-    <script src="/js/game/scenes/WinScene.js"></script>
+    <!-- ► ESCENAS -->
+    <script src="/js/game/scenes/BootScene.js?v=3.4"></script>
+    <script src="/js/game/scenes/IntroScene.js?v=3.3"></script>
+    <script src="/js/game/scenes/MenuScene.js?v=3.6"></script>
+    <script src="/js/game/scenes/AetherionCinema.js?v=3.3"></script>
+    <script src="/js/game/scenes/SettingsScene.js?v=3.4"></script>
+    <script src="/js/game/scenes/CreditsScene.js?v=3.0"></script>
+    <script src="/js/game/scenes/PreloadScene.js?v=3.0"></script>
+    <script src="/js/game/scenes/GameScene.js?v=3.6"></script>
+    <script src="/js/game/scenes/GameOverScene.js?v=3.6"></script>
+    <script src="/js/game/scenes/WinScene.js?v=3.2"></script>
+    <script src="/js/game/scenes/NameInputScene.js?v=3.0"></script>
+    <script src="/js/game/scenes/RankingScene.js?v=3.0"></script>
+    <script src="/js/game/scenes/PauseScene.js?v=3.1"></script>
     
     <!-- ► CONFIG & INIT -->
-    <script src="/js/game/config.js"></script>
-    <script src="/js/game/main.js"></script>
+    <script src="/js/game/config.js?v=3.4"></script>
+    <script src="/js/game/main.js?v=3.0"></script>
 </body>
 </html>

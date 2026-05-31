@@ -111,6 +111,7 @@ class Boss2 {
     ];
 
     [...bodyAnims, ...shockwaveAnims, ...projAnims].forEach((d) => {
+      if (scene.anims.exists(d.anim)) return; // Evitar duplicados
       Boss2.createAnimFromSheet(scene, d.anim, "boss2", d.sheet, d.frames, d.rate, d.repeat);
     });
   }
@@ -152,10 +153,11 @@ class Boss2 {
   }
 
   setupBody() {
-    const w = 72;
-    const h = 86;
+    // Hitbox reducida para ser más justo con el jugador (antes 72x86)
+    const w = 55;
+    const h = 75;
     this.sprite.body.setSize(w, h);
-    this.sprite.body.setOffset(12, 10);
+    this.sprite.body.setOffset(20, 15);
   }
 
   syncBody() {
@@ -329,7 +331,9 @@ class Boss2 {
 
     try {
       if (this.scene.sound) {
-        this.scene.sound.play("sfx_boss2_shoot", { volume: 0.65 });
+        const shootSounds = ["sfx_boss_shoot", "sfx_boss_shoot_alt"];
+        const randomSound = shootSounds[Math.floor(Math.random() * shootSounds.length)];
+        this.scene.sound.play(randomSound, { volume: 0.65 });
       }
     } catch (e) {
       // Sonido no disponible
@@ -476,7 +480,9 @@ class Boss2 {
 
     try {
       if (this.scene.sound) {
-        this.scene.sound.play("sfx_boss2_shoot", { volume: 0.5 });
+        const shootSounds = ["sfx_boss_shoot", "sfx_boss_shoot_alt"];
+        const randomSound = shootSounds[Math.floor(Math.random() * shootSounds.length)];
+        this.scene.sound.play(randomSound, { volume: 0.5 });
       }
     } catch (e) {
       // Sonido no disponible
@@ -648,11 +654,13 @@ class Boss2 {
     const speed = Math.sqrt(
       this.sprite.body.velocity.x ** 2 + this.sprite.body.velocity.y ** 2,
     );
-    if (speed > 0 && this.scene.time.now - this.lastStepAt > 300) {
+    if (speed > 0 && this.scene.time.now - this.lastStepAt > 350) {
       this.lastStepAt = this.scene.time.now;
       try {
         if (this.scene.sound) {
-          this.scene.sound.play("sfx_boss2_steps", { volume: 0.35 });
+          const stepSounds = ["sfx_step_boss", "sfx_step_boss_long"];
+          const randomStep = stepSounds[Math.floor(Math.random() * stepSounds.length)];
+          this.scene.sound.play(randomStep, { volume: 0.4 });
         }
       } catch (e) {
         // Sonido no disponible
@@ -737,12 +745,26 @@ class Boss2 {
   }
 
   takeDamage(amount) {
-    if (this.dead) {
+    if (this.dead || this.isInvulnerable) {
       return false;
     }
 
     this.hp = Math.max(0, this.hp - amount);
     this.scene.events.emit("boss-hp-changed");
+
+    // ► SISTEMA ANTI STUN-LOCK (Recovery)
+    this.isInvulnerable = true;
+    this.scene.tweens.add({
+        targets: this.sprite,
+        alpha: 0.5,
+        duration: 100,
+        yoyo: true,
+        repeat: 2,
+        onComplete: () => {
+            if (this.sprite) this.sprite.setAlpha(1);
+            this.isInvulnerable = false;
+        }
+    });
 
     const ag = this.getAggression();
     if (ag >= 0.66) {
@@ -817,9 +839,22 @@ class Boss2 {
       this.flyTween.stop();
     }
 
+    try {
+      if (this.scene.sound) {
+        this.scene.sound.play("explosion", { volume: 0.8 });
+      }
+    } catch (e) {}
+
     this.playBodyAnim("boss2_death", "death");
+
+    // Temporizador de seguridad (Fallback)
+    const fallbackTimer = this.scene.time.delayedCall(2500, () => {
+        this.scene.onBossDefeated();
+    });
+
     this.sprite.once("animationcomplete-boss2_death", () => {
-      this.scene.onBossDefeated();
+        fallbackTimer.remove();
+        this.scene.onBossDefeated();
     });
   }
 

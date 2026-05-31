@@ -1,7 +1,6 @@
 /**
- * DESTROYER - Enemigo de nivel 2
- * Versión más simple y rápida que Boss1, sin habilidad de volar
- * Estadísticas ajustadas para crear desafío intermedio
+ * DESTROYER — Enemigo del Modo Oleada (y enemigo genérico de combate).
+ * Al morir llama scene.onEnemyDefeated(destroyer) si existe (Modo Oleada).
  */
 
 const DESTROYER_MAX_HP = 200;
@@ -133,10 +132,11 @@ class Destroyer {
   }
 
   setupBody() {
-    const w = 72;
-    const h = 86;
+    // Hitbox reducida (antes 110x100)
+    const w = 85;
+    const h = 85;
     this.sprite.body.setSize(w, h);
-    this.sprite.body.setOffset(12, 10);
+    this.sprite.body.setOffset(35, 20);
   }
 
   syncBody() {
@@ -473,12 +473,26 @@ class Destroyer {
   }
 
   takeDamage(amount) {
-    if (this.dead) {
+    if (this.dead || this.isInvulnerable) {
       return false;
     }
 
     this.hp = Math.max(0, this.hp - amount);
     this.scene.events.emit("enemy-hp-changed");
+
+    // ► SISTEMA ANTI STUN-LOCK (Recovery)
+    this.isInvulnerable = true;
+    this.scene.tweens.add({
+        targets: this.sprite,
+        alpha: 0.5,
+        duration: 80,
+        yoyo: true,
+        repeat: 1,
+        onComplete: () => {
+            if (this.sprite) this.sprite.setAlpha(1);
+            this.isInvulnerable = false;
+        }
+    });
 
     const ag = this.getAggression();
     if (ag >= 0.66) {
@@ -541,7 +555,9 @@ class Destroyer {
 
     this.playBodyAnim("destroyer_death", "death");
     this.sprite.once("animationcomplete-destroyer_death", () => {
-      this.scene.onEnemyDefeated();
+      if (typeof this.scene.onEnemyDefeated === "function") {
+        this.scene.onEnemyDefeated(this);
+      }
     });
   }
 

@@ -11,11 +11,15 @@ class AetherionCinema extends Phaser.Scene {
     this.currentStepIdx = 0;
     this.isTyping = false;
     this.activeCharacters = new Map();
+    this.isFinished = false; // Control para evitar doble transición
   }
 
   create() {
-    console.log('[AetherionCinema] → Iniciando Motor de Novela Visual');
-    
+    console.log("[AetherionCinema] → Iniciando Motor de Novela Visual");
+    this.isFinished = false;
+
+    this.game.musicManager.stopAll();
+
     this.layerBG = this.add.container(0, 0);
     this.layerChars = this.add.container(0, 0);
     this.ui = new DialogueBox(this, GAME_WIDTH / 2, GAME_HEIGHT - 120);
@@ -39,14 +43,16 @@ class AetherionCinema extends Phaser.Scene {
       scenes: [{
         background: 'cine_bg_city',
         steps: [
-          { speaker: "Narrador", text: "El mundo ha cambiado... pero Dan sigue en pie." },
-          { char: "char_dan_norm", action: "enter", position: "center", text: "Dan: No permitiré que el desastre gane." }
+          { speaker: "Narrador", text: "El mundo ha cambiado... pero la misión sigue." },
+          { speaker: "Sistema", text: "Haz clic para continuar al combate." }
         ]
       }]
     };
   }
 
   handleInteraction() {
+    if (this.isFinished) return;
+
     if (this.isTyping) {
       const scene = this.scriptData.scenes[this.currentSceneIdx];
       const step = scene.steps[this.currentStepIdx];
@@ -63,7 +69,9 @@ class AetherionCinema extends Phaser.Scene {
     const scene = this.scriptData.scenes[idx];
 
     if (scene.background) this.changeBackground(scene.background);
-    if (scene.music) this.playMusic(scene.music);
+    if (scene.music) {
+      this.playMusic(scene.music);
+    }
 
     this.playStep(scene.steps[0]);
   }
@@ -110,33 +118,39 @@ class AetherionCinema extends Phaser.Scene {
     });
   }
 
-  /**
-   * Permite posicionar personajes usando 'left', 'right', 'center' 
-   * o coordenadas exactas x, y.
-   */
   characterEnter(step) {
     const key = step.char;
-    if (!this.textures.exists(key)) return;
+    if (!this.textures.exists(key)) {
+        console.warn(`[AetherionCinema] Texture missing: ${key}`);
+        return;
+    }
 
-    // Eliminar si ya existe para evitar duplicados
     if (this.activeCharacters.has(key)) {
       this.activeCharacters.get(key).destroy();
     }
 
+    // Prioridad de posicionamiento: 
+    // 1. Coordenadas explícitas (step.x, step.y)
+    // 2. Palabra clave (step.position: 'left', 'right', 'center', 'closeup')
     const xPos = step.x !== undefined ? step.x : this.getPosX(step.position);
-    const yPos = step.y !== undefined ? step.y : GAME_HEIGHT;
-    
-    const char = this.add.sprite(xPos, yPos + 300, key).setOrigin(0.5, 1);
-    
-    // Escala personalizada o defecto 1.0 (Dan y Mika son grandes)
-    char.setScale(step.scale || 1.2);
+
+    const layout = this.getCharacterLayout(key, step.position);
+    const finalX = step.x !== undefined ? step.x : layout.x !== undefined ? layout.x : xPos;
+    const finalY = step.y !== undefined ? step.y : layout.y !== undefined ? layout.y : layout.yDefault;
+    const finalScale = step.scale || layout.scale;
+    const finalDepth = layout.depth;
+
+    // yPos inicial para el efecto slide-in (desde más abajo)
+    const char = this.add.sprite(finalX, finalY + 500, key).setOrigin(0.5, 1);
+    char.setScale(finalScale);
+    char.setDepth(finalDepth);
 
     this.layerChars.add(char);
     this.activeCharacters.set(key, char);
 
     this.tweens.add({
       targets: char,
-      y: yPos,
+      y: finalY,
       duration: 600,
       ease: 'Power2.easeOut'
     });
@@ -172,10 +186,52 @@ class AetherionCinema extends Phaser.Scene {
 
   getPosX(pos) {
     switch(pos) {
-      case 'left': return GAME_WIDTH * 0.25;
-      case 'right': return GAME_WIDTH * 0.75;
+      case 'left': return GAME_WIDTH * 0.22;
+      case 'right': return GAME_WIDTH * 0.78;
+      case 'closeup': return GAME_WIDTH * 0.5;
+      case 'center': return GAME_WIDTH * 0.5;
       default: return GAME_WIDTH * 0.5;
     }
+  }
+
+  getCharacterLayout(key, position) {
+    const baseY = position === 'closeup' ? GAME_HEIGHT - 280 : GAME_HEIGHT - 180;
+    const defaultScale = position === 'closeup' ? 1.8 : 1.25;
+    const depth = position === 'closeup' ? 3000 : 50;
+
+    const layouts = {
+      dan_normal: {
+        x: position === 'right' ? GAME_WIDTH * 0.58 : this.getPosX(position),
+        y: position === 'closeup' ? GAME_HEIGHT - 300 : GAME_HEIGHT - 210,
+        scale: position === 'closeup' ? 2.0 : 1.3,
+        depth
+      },
+      mika_sentada: {
+        x: position === 'left' ? GAME_WIDTH * 0.42 : this.getPosX(position),
+        y: position === 'closeup' ? GAME_HEIGHT - 300 : GAME_HEIGHT - 220,
+        scale: position === 'closeup' ? 1.9 : 1.25,
+        depth
+      },
+      mika_surprise: {
+        x: this.getPosX(position),
+        y: position === 'closeup' ? GAME_HEIGHT - 300 : GAME_HEIGHT - 210,
+        scale: position === 'closeup' ? 1.9 : 1.25,
+        depth
+      },
+      dan_surprise: {
+        x: this.getPosX(position),
+        y: position === 'closeup' ? GAME_HEIGHT - 300 : GAME_HEIGHT - 210,
+        scale: position === 'closeup' ? 2.0 : 1.3,
+        depth
+      }
+    };
+
+    return layouts[key] || {
+      x: this.getPosX(position),
+      yDefault: baseY,
+      scale: defaultScale,
+      depth
+    };
   }
 
   nextStep() {
@@ -195,20 +251,27 @@ class AetherionCinema extends Phaser.Scene {
   }
 
   playMusic(key) {
-    if (this.currentMusic) this.currentMusic.stop();
-    if (this.cache.audio.exists(key)) {
-      this.currentMusic = this.sound.add(key, { loop: true, volume: 0.4 });
-      this.currentMusic.play();
-    }
+    if (!key) return;
+    this.game.musicManager.play(key, { volumeScale: 0.4 });
+    this.currentMusic = this.game.musicManager.currentInstance;
   }
 
   finishCinema() {
-    console.log('[AetherionCinema] → Fin de cinemática');
-    if (this.currentMusic) this.currentMusic.stop();
-    
-    this.cameras.main.fadeOut(1000);
-    this.time.delayedCall(1000, () => {
+    if (this.isFinished) return;
+    this.isFinished = true;
+
+    console.log("[AetherionCinema] → Transicionando a PreloadScene");
+    this.game.musicManager.stopAll();
+
+    this.cameras.main.fadeOut(800);
+    this.time.delayedCall(800, () => {
       this.scene.start("PreloadScene");
     });
   }
+
+  shutdown() {
+    this.game.musicManager?.stopAll();
+  }
 }
+
+window.AetherionCinema = AetherionCinema;

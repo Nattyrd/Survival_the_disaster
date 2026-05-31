@@ -5,8 +5,10 @@ const path = require("path");
 // HOT RELOAD
 // ================================
 
+const electronBin = process.platform === "win32" ? "electron.cmd" : "electron";
+
 require("electron-reload")(path.join(__dirname, ".."), {
-    electron: path.join(__dirname, "..", "node_modules", ".bin", "electron"),
+    electron: path.join(__dirname, "..", "node_modules", ".bin", electronBin),
     hardResetMethod: "exit"
 });
 

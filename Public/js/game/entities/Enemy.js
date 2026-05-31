@@ -1,8 +1,6 @@
 /**
- * Clase base para enemigos. Cuando tengas sprites en Assets/aseprite/enemies/:
- * 1. Añade sheets en ENTITY_MANIFESTS.enemy_grunt (o nuevo id)
- * 2. Incluye el id en MANIFESTS_TO_LOAD
- * 3. Extiende esta clase o instancia con el entityId correspondiente
+ * Enemigo genérico (Modo Oleada: PRÓXIMAMENTE).
+ * Extiende esta clase cuando existan sprites en Assets/aseprite/enemies/.
  */
 class Enemy {
     constructor(scene, entityId, x, y) {
