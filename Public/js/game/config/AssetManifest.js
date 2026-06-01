@@ -138,16 +138,69 @@ const ENTITY_MANIFESTS = {
 
     destroyer: {
         id: "destroyer",
+        displayName: "Destroyer",
         basePath: "/assets/sprites/enemies/Destroyer",
         sheets: [
-            { key: "idle", file: "Idle.png", frameWidth: 160, frameHeight: 128, frames: 4 },
-            { key: "walk", file: "Walk.png", frameWidth: 170, frameHeight: 128, frames: 6 },
-            { key: "charge", file: "Charge_1.png", frameWidth: 128, frameHeight: 32, frames: 1 },
-            { key: "charge2", file: "Charge_2.png", frameWidth: 160, frameHeight: 64, frames: 2 },
-            { key: "hurt", file: "Hurt.png", frameWidth: 192, frameHeight: 128, frames: 2 },
-            { key: "death", file: "Dead.png", frameWidth: 150, frameHeight: 128, frames: 6 },
-            { key: "special1", file: "Shot_1.png", frameWidth: 170, frameHeight: 128, frames: 6 },
-            { key: "special2", file: "Shot_2.png", frameWidth: 256, frameHeight: 128, frames: 4 }
+            { 
+                key: "idle", 
+                isIndividual: true, 
+                files: ["DestroyerWalk-1-1.png"], // Frame estático
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "walk", 
+                isIndividual: true, 
+                files: [
+                    "DestroyerWalk-1-1.png", "DestroyerWalk-1-2.png", "DestroyerWalk-1-3.png", "DestroyerWalk-1-4.png", 
+                    "DestroyerWalk-1-5.png", "DestroyerWalk-1-6.png", "DestroyerWalk-1-7.png", "DestroyerWalk-1-8.png"
+                ],
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "charge", 
+                isIndividual: true, 
+                files: ["DetroyerAtack-1-1.png", "DetroyerAtack-1-2.png", "DetroyerAtack-1-3.png", "DetroyerAtack-1-4.png"],
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "charge2", 
+                file: "Charge_2.png", 
+                frameWidth: 160, frameHeight: 128, 
+                frames: 2 
+            },
+            { 
+                key: "hurt", 
+                isIndividual: true, 
+                files: ["DestroyerHurt-1-1.png", "DestroyerHurt-1-2.png", "DestroyerHurt-1-3.png"],
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "death", 
+                isIndividual: true, 
+                files: [
+                    "DestroyerDead-1-1.png", "DestroyerDead-1-2.png", "DestroyerDead-1-3.png", "DestroyerDead-1-4.png", 
+                    "DestroyerDead-1-5.png", "DestroyerDead-1-6.png", "DestroyerDead-1-7.png"
+                ],
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "special1", 
+                isIndividual: true, 
+                files: [
+                    "DestroyerShot-1-1.png", "DestroyerShot-1-2.png", "DestroyerShot-1-3.png", "DestroyerShot-1-4.png", 
+                    "DestroyerShot-1-5.png", "DestroyerShot-1-6.png", "DestroyerShot-1-7.png", "DestroyerShot-1-8.png"
+                ],
+                frameWidth: 160, frameHeight: 128
+            },
+            { 
+                key: "special2", 
+                isIndividual: true, 
+                files: [
+                    "DestroyerFatack-1-1.png", "DestroyerFatack-1-2.png", "DestroyerFatack-1-3.png", 
+                    "DestroyerFatack-1-4.png", "DestroyerFatack-1-5.png", "DestroyerFatack-1-6.png"
+                ],
+                frameWidth: 160, frameHeight: 128
+            }
         ]
     }
 };

@@ -109,11 +109,9 @@ class IntroScene extends Phaser.Scene {
     if (this.transitioning) return;
     if (!force && !this.skipEnabled) return;
     this.transitioning = true;
-    this.game.musicManager.stopAll();
-    this.game.musicManager.stopKey("introMusic");
+    this.game.musicManager.stopAll(true); // Limpiar todo antes de ir al menú
     this.cameras.main.fadeOut(1000);
     this.time.delayedCall(1000, () => {
-      this.game.musicManager.stopAll();
       this.scene.start("MenuScene");
     });
   }

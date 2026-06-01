@@ -64,12 +64,13 @@ class GameScene extends Phaser.Scene {
 
     manageMusic() {
         const mission = this.registry.get("mission") || 1;
-        let trackKey = "bgm_intro";
+        let trackKey = "bgm_mission1";
 
-        if (mission === 2) trackKey = "bgm_intro2";
-        else if (mission === 3) trackKey = "bgm_menu";
-        else if (mission === MISSION_WAVE) trackKey = "bgm_intro";
+        if (mission === 2) trackKey = "bgm_mission2";
+        else if (mission === 3) trackKey = "bgm_mission3";
+        else if (mission === MISSION_WAVE) trackKey = "bgm_wave";
 
+        console.log(`[GameScene] Reproduciendo música de misión: ${trackKey}`);
         this.game.musicManager.play(trackKey, { volumeScale: 0.45 });
     }
 
@@ -140,7 +141,7 @@ class GameScene extends Phaser.Scene {
 
         const { width, height } = this.scale;
         const missionNames = {
-            1: "LIMPIA LA ZONA DE ESTE ROB",
+            1: "LIMPIA LA ZONA DE ESTE ROBOT",
             2: "DETÉN AL TITÁN MK-3",
             3: "DERROTA AL COMANDANTE ANDRONIMUS",
         };
@@ -541,13 +542,16 @@ class GameScene extends Phaser.Scene {
     }
 
     showEndScreen(sceneKey) {
-        if (this.gameEndedAt && this.time.now < this.gameEndedAt + 100) return;
-        this.gameEndedAt = this.time.now;
+        // Evitar múltiples llamadas
+        if (this.isTransitioning) return;
+        this.isTransitioning = true;
         
-        this.combatActive = false;
         this.gameEnded = true;
+        this.combatActive = false;
+        
         this.physics.pause();
-        this.tweens.killAll();
+        // No matamos todos los tweens para permitir que la animación de muerte termine si usa tweens
+        // this.tweens.killAll(); 
 
         console.log(`[GameScene] Finalizando misión. Transicionando a: ${sceneKey}`);
 
@@ -564,15 +568,31 @@ class GameScene extends Phaser.Scene {
             this.waveSpawnTimer = null;
         }
 
-        if (this.isWaveMode && this.enemies) {
-            this.enemies.forEach((e) => {
-                if (e?.sprite?.active) e.sprite.destroy();
+        // ► LIMPIEZA ROBUSTA DE ENEMIGOS (Evita crash en Modo Oleada)
+        if (this.enemies && Array.isArray(this.enemies)) {
+            const enemiesToClean = [...this.enemies]; // Copia para evitar problemas al iterar
+            this.enemies = []; // Limpiar referencia principal inmediatamente
+            
+            enemiesToClean.forEach((e) => {
+                if (!e) return;
+                try {
+                    e.dead = true; // Forzar estado muerto
+                    // Detener proyectiles del enemigo
+                    if (e.projectiles && typeof e.projectiles.clear === 'function') {
+                        e.projectiles.clear(true, true);
+                    }
+                    // Destruir sprite
+                    if (e.sprite && e.sprite.active) {
+                        e.sprite.destroy();
+                    }
+                } catch (err) {
+                    console.warn("[GameScene] Error limpiando enemigo:", err);
+                }
             });
-            this.enemies = [];
         }
 
         // Pequeño delay para que el jugador vea el resultado final
-        this.time.delayedCall(500, () => {
+        this.time.delayedCall(800, () => {
             this.scene.stop("GameScene");
             this.scene.start(sceneKey);
         });
@@ -581,7 +601,14 @@ class GameScene extends Phaser.Scene {
     onPlayerDefeated() {
         if (this.gameEnded) return;
         this.gameEnded = true;
+        this.combatActive = false;
         
+        // Detener spawneo de oleadas inmediatamente
+        if (this.waveSpawnTimer) {
+            this.waveSpawnTimer.remove();
+            this.waveSpawnTimer = null;
+        }
+
         console.log("[GameScene] Jugador derrotado. Transicionando a GameOver.");
         this.showEndScreen("GameOverScene");
     }
@@ -589,6 +616,7 @@ class GameScene extends Phaser.Scene {
     onBossDefeated() {
         if (this.gameEnded) return;
         this.gameEnded = true;
+        this.combatActive = false;
         
         // Al ganar, el puntaje se mantiene en el registry para la siguiente fase o el ranking
         console.log(`[GameScene] Jefe derrotado. Puntuación acumulada: ${this.registry.get("totalDamageInflicted")}`);
@@ -605,6 +633,9 @@ class GameScene extends Phaser.Scene {
             this.touchControls = null;
         }
         this.registry.events.off("changedata-musicVolume");
+        this.events.off("player-hp-changed");
+        this.events.off("boss-hp-changed");
+        this.events.off("enemy-hp-changed");
     }
 
     updateFps() {
@@ -617,19 +648,33 @@ class GameScene extends Phaser.Scene {
         this.updateFps();
         if (!this.player || this.gameEnded) return;
 
-        if (this.player.isDying) return;
+        // Si el jugador está en proceso de morir, seguimos actualizando el HUD y el timer
+        // pero detenemos el procesamiento de combate/IA.
+        if (this.player.isDying) {
+            const timeElapsed = this.time.now - this.startTime;
+            if (this.isWaveMode) {
+                this.hud.update(this.player, null, timeElapsed, this.getWaveHudInfo());
+            } else {
+                this.hud.update(this.player, this.boss, timeElapsed);
+            }
+            return;
+        }
 
         if (this.combatActive) {
             this.player.update(this.input.activePointer);
 
             if (this.isWaveMode) {
-                this.enemies.forEach((enemy) => {
-                    if (enemy && !enemy.dead) enemy.update(this.player);
-                });
+                if (this.enemies && Array.isArray(this.enemies)) {
+                    this.enemies.forEach((enemy) => {
+                        if (enemy && !enemy.dead) enemy.update(this.player);
+                    });
+                }
                 const timeElapsed = this.time.now - this.startTime;
                 this.hud.update(this.player, null, timeElapsed, this.getWaveHudInfo());
             } else {
-                this.boss.update(this.player);
+                if (this.boss && !this.boss.dead) {
+                    this.boss.update(this.player);
+                }
                 const timeElapsed = this.time.now - this.startTime;
                 this.hud.update(this.player, this.boss, timeElapsed);
             }

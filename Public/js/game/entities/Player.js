@@ -132,21 +132,35 @@ class Player {
     }
 
     playDeath() {
-        if (this.isDying || this.isDead) return;
+        if (this.isDead) return;
         this.isDying = true;
         this.isDead = true;
+        
+        console.log(`[Player] Iniciando secuencia de muerte para: ${this.id}`);
         this.sprite.body.setVelocity(0, 0);
         
         const deathAnim = `${this.id}_death`;
         if (this.scene.anims.exists(deathAnim)) {
             this.sprite.play(deathAnim);
-            this.sprite.once("animationcomplete", () => this.finishDeath());
+            this.sprite.once("animationcomplete", () => {
+                console.log("[Player] Animación de muerte completada");
+                this.finishDeath();
+            });
+            // Fallback por si la animación falla
             this.scene.time.delayedCall(2000, () => this.finishDeath());
-        } else this.finishDeath();
+        } else {
+            this.finishDeath();
+        }
     }
 
     finishDeath() {
-        if (this.scene && this.scene.onPlayerDefeated) this.scene.onPlayerDefeated();
+        if (this.hasFinishedDeath) return;
+        this.hasFinishedDeath = true;
+        
+        console.log("[Player] Finalizando secuencia de muerte");
+        if (this.scene && typeof this.scene.onPlayerDefeated === 'function') {
+            this.scene.onPlayerDefeated();
+        }
     }
 
     static createAnimations(scene) {

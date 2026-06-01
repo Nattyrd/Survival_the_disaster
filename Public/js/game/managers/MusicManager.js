@@ -8,6 +8,11 @@ class MusicManager {
     "menuMusic",
     "selectMusic",
     "cinematicMusic",
+    "bgm_mission1",
+    "bgm_mission2",
+    "bgm_mission3",
+    "bgm_wave",
+    "bgm_tension",
     "bgm_intro",
     "bgm_intro2",
     "bgm_menu",
@@ -44,7 +49,7 @@ class MusicManager {
     if (lower.includes("sfx") || lower.includes("selectdan") || lower.includes("selectsfx")) {
       return false;
     }
-    return lower.includes("bgm") || lower.includes("music");
+    return lower.includes("bgm") || lower.includes("music") || lower.includes("ambient");
   }
 
   stopKey(key) {
@@ -55,18 +60,23 @@ class MusicManager {
     });
   }
 
-  stopAll() {
+  stopAll(includeAmbientSfx = true) {
+    // 1. Parar pistas registradas
     MusicManager.MUSIC_KEYS.forEach((key) => this.stopKey(key));
 
-    if (this.game.sound.sounds) {
-      this.game.sound.sounds.forEach((sound) => {
-        if (sound.isPlaying && this.isMusicKey(sound.key)) sound.stop();
-      });
+    // 2. Parar efectos ambientales si se solicita
+    if (includeAmbientSfx) {
+        this.stopKey("electrical_buzz");
     }
 
-    this.game.sound.getAllPlaying().forEach((sound) => {
-      if (this.isMusicKey(sound.key)) sound.stop();
-    });
+    // 3. Limpieza profunda de cualquier sonido musical que esté sonando
+    if (this.game.sound.sounds) {
+      this.game.sound.sounds.forEach((sound) => {
+        if (sound.isPlaying && (this.isMusicKey(sound.key) || (includeAmbientSfx && sound.key === "electrical_buzz"))) {
+          sound.stop();
+        }
+      });
+    }
 
     this._instances.forEach((sound) => {
       if (sound?.isPlaying) sound.stop();

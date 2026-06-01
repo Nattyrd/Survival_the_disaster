@@ -275,6 +275,7 @@ class PauseScene extends Phaser.Scene {
 
         const btnYes = new Button(this, width / 2 - 150, btnY, {
             text: "SÍ, CONFIRMAR", width: 250, height: 60, callback: () => {
+                this.game.musicManager.stopAll(true); // Limpieza de audio antes de salir
                 this.scene.stop(this.parentScene);
                 if (type === "restart") this.scene.start("PreloadScene");
                 else this.scene.start("MenuScene");

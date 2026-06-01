@@ -40,12 +40,14 @@ class Destroyer {
     this.sprite.setDepth(8);
     this.sprite.setCollideWorldBounds(true);
     this.sprite.setFlipX(true);
+    this.sprite.setOrigin(0.5, 1);
     this.sprite.setData("isEnemy", true);
 
     this.projectiles = scene.physics.add.group({ maxSize: 12 });
 
     this.setupBody();
     this.setIdle();
+    this.sprite.on("animationupdate", this.normalizeFrameSize, this);
     this.sprite.on("animationcomplete", this.onAnimComplete, this);
     this.scheduleThink(1000);
   }
@@ -56,14 +58,14 @@ class Destroyer {
       {
         anim: "destroyer_walk",
         sheet: "walk",
-        frames: 6,
+        frames: 8, // Ajustado a 8 según el manifiesto
         rate: 10,
         repeat: -1,
       },
       {
         anim: "destroyer_charge",
         sheet: "charge",
-        frames: 1,
+        frames: 4, // Ajustado a 4 según el manifiesto
         rate: 10,
         repeat: 0,
       },
@@ -74,11 +76,11 @@ class Destroyer {
         rate: 12,
         repeat: 0,
       },
-      { anim: "destroyer_hurt", sheet: "hurt", frames: 2, rate: 10, repeat: 0 },
+      { anim: "destroyer_hurt", sheet: "hurt", frames: 3, rate: 10, repeat: 0 },
       {
         anim: "destroyer_death",
         sheet: "death",
-        frames: 6,
+        frames: 7, // Ajustado a 7 según el manifiesto
         rate: 9,
         repeat: 0,
       },
@@ -88,46 +90,80 @@ class Destroyer {
       {
         anim: "destroyer_proj_attack1",
         sheet: "special1",
-        frames: 6,
+        frames: 8, // Ajustado a 8 según el manifiesto
         rate: 16,
         repeat: -1,
       },
       {
         anim: "destroyer_proj_attack2",
         sheet: "special2",
-        frames: 4,
+        frames: 6, // Ajustado a 6 según el manifiesto
         rate: 14,
         repeat: -1,
       },
     ];
 
     [...bodyAnims, ...projAnims].forEach((d) => {
-      try {
-        const tex = EntityLoader.textureKey("destroyer", d.sheet);
+      Destroyer.createAnimFromSheet(scene, d.anim, d.sheet, d.frames, d.rate, d.repeat);
+    });
+  }
+
+  static createAnimFromSheet(scene, animKey, sheetKey, frameCount, rate, repeat) {
+    try {
+      if (scene.anims.exists(animKey)) return;
+
+      const m = ENTITY_MANIFESTS["destroyer"];
+      const sheetData = m.sheets.find(s => s.key === sheetKey);
+      if (!sheetData) return;
+
+      if (sheetData.isIndividual) {
+        const frames = [];
+        sheetData.files.forEach((_, i) => {
+          const subKey = EntityLoader.textureKey("destroyer", sheetKey, i);
+          if (scene.textures.exists(subKey)) {
+            frames.push({ key: subKey });
+          }
+        });
+
+        if (frames.length > 0) {
+          scene.anims.create({
+            key: animKey,
+            frames: frames,
+            frameRate: rate,
+            repeat: repeat
+          });
+        }
+      } else {
+        const tex = EntityLoader.textureKey("destroyer", sheetKey);
         if (!scene.textures.exists(tex)) {
           console.warn(`[Destroyer] Texture ${tex} does not exist yet`);
           return;
         }
-        if (scene.anims.exists(d.anim)) {
-          console.warn(`[Destroyer] Animation ${d.anim} already exists`);
-          return;
-        }
+
+        const availableFrames = scene.textures.get(tex).frameTotal;
+        const endFrame = Math.min(frameCount, availableFrames) - 1;
+        
         scene.anims.create({
-          key: d.anim,
+          key: animKey,
           frames: scene.anims.generateFrameNumbers(tex, {
             start: 0,
-            end: d.frames - 1,
+            end: endFrame,
           }),
-          frameRate: d.rate,
-          repeat: d.repeat,
+          frameRate: rate,
+          repeat: repeat,
         });
-      } catch (e) {
-        console.error(`[Destroyer] Error creating animation ${d.anim}:`, e);
       }
-    });
+    } catch (e) {
+      console.error(`[Destroyer] Error creating animation ${animKey}:`, e);
+    }
   }
 
   tex(sheetKey) {
+    const m = ENTITY_MANIFESTS[this.id];
+    const sheetData = m.sheets.find(s => s.key === sheetKey);
+    if (sheetData && sheetData.isIndividual) {
+        return EntityLoader.textureKey(this.id, sheetKey, 0);
+    }
     return EntityLoader.textureKey(this.id, sheetKey);
   }
 
@@ -145,7 +181,9 @@ class Destroyer {
 
   stopMovement() {
     this.isChasing = false;
-    this.sprite.body.setVelocity(0, 0);
+    if (this.sprite && this.sprite.body) {
+        this.sprite.body.setVelocity(0, 0);
+    }
   }
 
   isMoving() {
@@ -204,9 +242,29 @@ class Destroyer {
     if (this.sprite.anims.currentAnim?.key === animKey) {
       return;
     }
-    this.sprite.setTexture(this.tex(sheetKey));
+
+    const texKey = this.tex(sheetKey);
+    if (!this.scene.textures.exists(texKey)) {
+      console.warn(`[Destroyer] Cannot set texture, missing key: ${texKey}`);
+      return;
+    }
+    if (!this.scene.anims.exists(animKey)) {
+      console.warn(`[Destroyer] Cannot play animation, missing key: ${animKey}`);
+      return;
+    }
+
+    this.sprite.setTexture(texKey, 0);
     this.sprite.setScale(DESTROYER_SCALE);
+    this.sprite.setOrigin(0.5, 1);
     this.sprite.play(animKey);
+  }
+
+  normalizeFrameSize() {
+    const frame = this.sprite.frame;
+    if (!frame) return;
+
+    this.sprite.setOrigin(0.5, 1);
+    this.sprite.setScale(DESTROYER_SCALE);
   }
 
   scheduleThink(delay) {
@@ -322,7 +380,7 @@ class Destroyer {
     const fireDelay = Phaser.Math.Linear(180, 100, this.getAggression());
 
     this.scene.time.delayedCall(fireDelay, () => {
-      if (this.dead || !this.isAttacking) {
+      if (this.dead || !this.isAttacking || !this.sprite || !this.sprite.active) {
         return;
       }
 
@@ -331,6 +389,7 @@ class Destroyer {
 
     // Terminar ataque después de 600ms
     this.scene.time.delayedCall(600, () => {
+      if (this.dead || !this.sprite || !this.sprite.active) return;
       this.isAttacking = false;
       this.scheduleThink(300);
     });
@@ -379,19 +438,22 @@ class Destroyer {
 
     // Usar animación walk (mantiene tamaño correcto) durante la carga
     this.setWalk();
-    const angle = Phaser.Math.Angle.Between(
-      this.sprite.x,
-      this.sprite.y,
-      player.sprite.x,
-      player.sprite.y,
-    );
-    const speed = DESTROYER_SPEED * 2; // Muy rápido en carga
-    const vx = Math.cos(angle) * speed;
-    const vy = Math.sin(angle) * speed;
-    this.sprite.setVelocity(vx, vy);
+    if (this.sprite && this.sprite.active && player.sprite && player.sprite.active) {
+        const angle = Phaser.Math.Angle.Between(
+          this.sprite.x,
+          this.sprite.y,
+          player.sprite.x,
+          player.sprite.y,
+        );
+        const speed = DESTROYER_SPEED * 2; // Muy rápido en carga
+        const vx = Math.cos(angle) * speed;
+        const vy = Math.sin(angle) * speed;
+        if (this.sprite.body) this.sprite.setVelocity(vx, vy);
+    }
 
     // Auto-terminar después de DESTROYER_MELEE_DURATION
     this.scene.time.delayedCall(DESTROYER_MELEE_DURATION, () => {
+      if (this.dead || !this.sprite || !this.sprite.active) return;
       this.isMeleeAttacking = false;
       this.isAttacking = false;
       this.stopMovement();
@@ -405,19 +467,22 @@ class Destroyer {
     // Retroceder (moverse en dirección opuesta al jugador)
     this.isChasing = false;
     this.faceTarget(player);
-    const angle = Phaser.Math.Angle.Between(
-      player.sprite.x,
-      player.sprite.y,
-      this.sprite.x,
-      this.sprite.y,
-    );
-    const vx = Math.cos(angle) * DESTROYER_SPEED;
-    const vy = Math.sin(angle) * DESTROYER_SPEED;
-    this.sprite.setVelocity(vx, vy);
+    if (this.sprite && this.sprite.active && player.sprite && player.sprite.active) {
+        const angle = Phaser.Math.Angle.Between(
+          player.sprite.x,
+          player.sprite.y,
+          this.sprite.x,
+          this.sprite.y,
+        );
+        const vx = Math.cos(angle) * DESTROYER_SPEED;
+        const vy = Math.sin(angle) * DESTROYER_SPEED;
+        if (this.sprite.body) this.sprite.setVelocity(vx, vy);
+    }
     this.setWalk();
 
     // Después de 1.5 segundos, volver a idle y pensar
     this.scene.time.delayedCall(1500, () => {
+      if (this.dead || !this.sprite || !this.sprite.active) return;
       this.stopMovement();
       this.setIdle();
       this.scheduleThink(300);
@@ -451,48 +516,53 @@ class Destroyer {
   }
 
   updateProjectiles() {
+    if (!this.scene || !this.scene.physics || !this.scene.physics.world) return;
     const bounds = this.scene.physics.world.bounds;
 
-    this.projectiles.getChildren().forEach((proj) => {
-      if (!proj.active) {
-        return;
-      }
+    if (this.projectiles && this.projectiles.active) {
+        this.projectiles.getChildren().forEach((proj) => {
+            if (!proj.active) {
+                return;
+            }
 
-      const out =
-        proj.x < bounds.x - 60 ||
-        proj.x > bounds.width + 60 ||
-        proj.y < bounds.y - 60 ||
-        proj.y > bounds.height + 60;
+            const out =
+                proj.x < bounds.x - 100 ||
+                proj.x > bounds.right + 100 ||
+                proj.y < bounds.y - 100 ||
+                proj.y > bounds.bottom + 100;
 
-      if (out || this.scene.time.now > proj.lifespan) {
-        proj.setActive(false);
-        proj.setVisible(false);
-        proj.body.stop();
-      }
-    });
+            if (out || this.scene.time.now > proj.lifespan) {
+                proj.setActive(false);
+                proj.setVisible(false);
+                if (proj.body) proj.body.stop();
+            }
+        });
+    }
   }
 
   takeDamage(amount) {
-    if (this.dead || this.isInvulnerable) {
+    if (this.dead || this.isInvulnerable || !this.scene) {
       return false;
     }
 
     this.hp = Math.max(0, this.hp - amount);
-    this.scene.events.emit("enemy-hp-changed");
+    if (this.scene.events) this.scene.events.emit("enemy-hp-changed");
 
     // ► SISTEMA ANTI STUN-LOCK (Recovery)
     this.isInvulnerable = true;
-    this.scene.tweens.add({
-        targets: this.sprite,
-        alpha: 0.5,
-        duration: 80,
-        yoyo: true,
-        repeat: 1,
-        onComplete: () => {
-            if (this.sprite) this.sprite.setAlpha(1);
-            this.isInvulnerable = false;
-        }
-    });
+    if (this.scene.tweens) {
+        this.scene.tweens.add({
+            targets: this.sprite,
+            alpha: 0.5,
+            duration: 80,
+            yoyo: true,
+            repeat: 1,
+            onComplete: () => {
+                if (this.sprite && this.sprite.active) this.sprite.setAlpha(1);
+                this.isInvulnerable = false;
+            }
+        });
+    }
 
     const ag = this.getAggression();
     if (ag >= 0.66) {
@@ -530,9 +600,10 @@ class Destroyer {
   }
 
   flashHit() {
+    if (!this.sprite || !this.sprite.active || !this.scene) return;
     this.sprite.setTint(0xffaaaa);
     this.scene.time.delayedCall(70, () => {
-      if (this.sprite.active && !this.dead) {
+      if (this.sprite && this.sprite.active && !this.dead) {
         this.sprite.clearTint();
       }
     });
@@ -548,23 +619,27 @@ class Destroyer {
     this.isChasing = false;
     this.stopMovement();
 
-    this.projectiles.getChildren().forEach((p) => {
-      p.setActive(false);
-      p.setVisible(false);
-    });
+    if (this.projectiles && this.projectiles.active) {
+        this.projectiles.getChildren().forEach((p) => {
+          p.setActive(false);
+          p.setVisible(false);
+          if (p.body) p.body.stop();
+        });
+    }
 
     this.playBodyAnim("destroyer_death", "death");
     this.sprite.once("animationcomplete-destroyer_death", () => {
-      if (typeof this.scene.onEnemyDefeated === "function") {
+      if (this.scene && typeof this.scene.onEnemyDefeated === "function") {
         this.scene.onEnemyDefeated(this);
       }
     });
   }
 
   update(player) {
+    if (!this.scene || !this.sprite || !this.sprite.active) return;
     this.updateProjectiles();
 
-    if (this.dead) {
+    if (this.dead || !player || !player.sprite || !player.sprite.active) {
       return;
     }
 
@@ -598,12 +673,14 @@ class Destroyer {
           this.fireAtPlayer(player);
         }
       } else {
-        this.scene.physics.moveToObject(
-          this.sprite,
-          player.sprite,
-          stats.moveSpeed,
-        );
-        this.syncMovementAnimation();
+        if (this.scene.physics && this.sprite.body) {
+            this.scene.physics.moveToObject(
+              this.sprite,
+              player.sprite,
+              stats.moveSpeed,
+            );
+            this.syncMovementAnimation();
+        }
       }
       return;
     }

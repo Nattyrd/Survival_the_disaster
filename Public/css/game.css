@@ -16,6 +16,10 @@ body {
     user-select: none;
     position: fixed;
     inset: 0;
+    /* Evita el scroll elástico y recarga por arrastre en móviles */
+    overscroll-behavior: none;
+    /* Soporte para dispositivos con notch (iPhone, etc.) */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 #game-container {

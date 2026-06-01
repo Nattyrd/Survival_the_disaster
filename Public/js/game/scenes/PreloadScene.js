@@ -13,27 +13,67 @@ class PreloadScene extends Phaser.Scene {
         const selectedChar = this.registry.get("selectedCharacter") || "hero";
         const { width, height } = this.scale;
 
-        const bar = this.add.graphics();
-        const box = this.add.graphics();
-        box.fillStyle(0x222222, 0.8);
-        box.fillRect(width / 2 - 160, height / 2 - 25, 320, 50);
+        // 1. Mostrar Fondo de Carga (Ya cargado en BootScene)
+        if (this.textures.exists('loading_bg')) {
+            const bg = this.add.image(width / 2, height / 2, 'loading_bg');
+            const scale = Math.max(width / bg.width, height / bg.height);
+            bg.setScale(scale);
+        }
+
+        // 2. UI de Carga Estilizada (Estilo BootScene)
+        const barW = 400;
+        const barH = 12;
+        const barX = width / 2 - barW / 2;
+        const barY = height * 0.85;
+
+        // Texto de Título/Estado
+        const statusText = this.add.text(width / 2, barY - 45, "PREPARANDO DESPLIEGUE...", {
+            fontFamily: "Arial Black", fontSize: "18px", color: "#38bdf8"
+        }).setOrigin(0.5);
+
+        const percentText = this.add.text(width / 2, barY + 35, "0%", {
+            fontFamily: "Consolas", fontSize: "16px", color: "#94a3b8"
+        }).setOrigin(0.5);
+
+        // Gráficos de la barra
+        const progressBox = this.add.graphics();
+        const progressBar = this.add.graphics();
+        
+        progressBox.fillStyle(0x0f172a, 0.7);
+        progressBox.lineStyle(2, 0x38bdf8, 0.5);
+        progressBox.fillRoundedRect(barX, barY, barW, barH, 6);
+        progressBox.strokeRoundedRect(barX, barY, barW, barH, 6);
 
         this.load.on("progress", (value) => {
-            bar.clear();
-            bar.fillStyle(0x38bdf8, 1);
-            bar.fillRect(width / 2 - 150, height / 2 - 15, 300 * value, 30);
+            const currentPerc = Math.floor(value * 100);
+            percentText.setText(`${currentPerc}%`);
+            
+            progressBar.clear();
+            progressBar.fillStyle(0x38bdf8, 1);
+            progressBar.fillRoundedRect(barX + 2, barY + 2, (barW - 4) * value, barH - 4, 4);
+
+            // Mensajes dinámicos según el progreso
+            if (value < 0.3) statusText.setText("CARGANDO PROTOCOLOS DE COMBATE...");
+            else if (value < 0.6) statusText.setText("SINCRONIZANDO ARMAS AETHERION...");
+            else if (value < 0.9) statusText.setText("CALIBRANDO SISTEMAS DEFENSIVOS...");
+            else statusText.setText("AUTORIZACIÓN COMPLETADA. LISTO PARA EL SALTO.");
         });
 
         this.load.on("complete", () => {
-            bar.destroy();
-            box.destroy();
+            this.tweens.add({
+                targets: [statusText, percentText, progressBox, progressBar],
+                alpha: 0,
+                duration: 500
+            });
         });
 
-        // 1. CARGA DE ASSETS PARA CINEMÁTICA Y TUTORIAL
+        // 3. CARGA DE ASSETS PARA CINEMÁTICA Y TUTORIAL (Resto de tu lógica original)
         this.load.json('intro_script', '/assets/intro/intro_script.json');
         this.load.image('guia_tutorial', '/assets/menu/guia/Tutorial.png');
         this.load.image('screen_win', '/assets/menu/guia/WINScreen.png');
         this.load.image('screen_lose', '/assets/menu/guia/LoseScreen.png');
+        
+        // ... (rest of the asset loading logic)
         
         // Fondos de Novela
         this.load.image('vn_campus_noche', '/assets/novela/edicioNoche.png');

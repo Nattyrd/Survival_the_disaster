@@ -42,7 +42,7 @@ class MenuScene extends Phaser.Scene {
     }
 
     // 2. Audio
-    this.game.musicManager.stopAll();
+    this.game.musicManager.stopAll(true); // Se añade true para limpiar sfx ambientales como electrical_buzz
     this.game.musicManager.stopCharacterSelectVoices();
     this.game.musicManager.play("menuMusic", { volumeScale: 0.5 });
 

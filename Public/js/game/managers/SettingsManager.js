@@ -160,7 +160,8 @@ class GraphicsManager {
 
     apply(settings) {
         this.setupScaleListeners();
-        ScaleManager.refresh(this.game);
+        // Evitamos llamar a refresh aquí porque ScaleManager ya lo hace al inicio
+        // y applyFullscreen ya gestionará el estado si es necesario.
         ScaleManager.applyFullscreen(this.game, settings.fullscreen);
 
         this.game.registry.set("showFPS", settings.showFPS);
