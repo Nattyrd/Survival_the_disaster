@@ -173,8 +173,8 @@ Public/js/game/
 
 ### Assets
 
-- Sprites y animaciones: Creados con Aseprite
-- Música y efectos de sonido: Diseño de audio original
+- Sprites y animaciones: Creados con Libresprite, https://craftpix.net/freebies/free-robot-pixel-art-sprite-sheets/, 
+- Música y efectos de sonido: Diseño de audio original, efectos de https://www.hooksounds.com/es/
 - Interfaz: Renderizado con Phaser Text y Graphics
 
 ---
